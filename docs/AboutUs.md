@@ -20,15 +20,15 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 * Role: Testing
 * Responsibilities: Ensure all code is tested
 
-### Jane Doe
+### Tan Je-Deon
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/momentumnn.png" width="200px">
 
-[[github](http://github.com/janedoe)]
-[[portfolio](team/johndoe.md)]
+[[github](http://github.com/momentumnn)]
+[[portfolio](team/momentumnn.md)]
 
-* Role: Team Lead
-* Responsibilities: UI
+* Role: Code quality
+* Responsibilities: Storage
 
 ### Johnny Doe
 

@@ -20,17 +20,20 @@ public class Person {
     // Data fields
     private final Address address;
     private final TrainingGoal trainingGoal;
+    private final Availability availability;
 
     /**
      * Every field must be present and not null.
      */
-    public Person(Name name, Phone phone, Email email, Address address, TrainingGoal trainingGoal) {
-        requireAllNonNull(name, phone, email, address, trainingGoal);
+    public Person(Name name, Phone phone, Email email, Address address, TrainingGoal trainingGoal, Availability availability) {
+        requireAllNonNull(name, phone, email, address, trainingGoal, availability);
+      
         this.name = name;
         this.phone = phone;
         this.email = email;
         this.address = address;
         this.trainingGoal = trainingGoal;
+        this.availability = availability;
     }
 
     public Name getName() {
@@ -51,6 +54,10 @@ public class Person {
 
     public TrainingGoal getTrainingGoal() {
         return trainingGoal;
+    }
+  
+    public Availability getAvailability() {
+        return availability;
     }
 
     /**
@@ -86,13 +93,14 @@ public class Person {
                 && phone.equals(otherPerson.phone)
                 && email.equals(otherPerson.email)
                 && address.equals(otherPerson.address)
-                && trainingGoal.equals(otherPerson.trainingGoal);
+                && trainingGoal.equals(otherPerson.trainingGoal)
+                && availability.equals(otherPerson.availability);
     }
 
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(name, phone, email, address, trainingGoal);
+        return Objects.hash(name, phone, email, address, trainingGoal, availability);
     }
 
     @Override
@@ -103,6 +111,7 @@ public class Person {
                 .add("email", email)
                 .add("address", address)
                 .add("trainingGoal", trainingGoal)
+                .add("availability", availability)
                 .toString();
     }
 

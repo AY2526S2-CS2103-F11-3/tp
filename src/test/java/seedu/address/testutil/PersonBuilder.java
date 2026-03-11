@@ -1,6 +1,7 @@
 package seedu.address.testutil;
 
 import seedu.address.model.person.Address;
+import seedu.address.model.person.Availability;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
@@ -17,12 +18,14 @@ public class PersonBuilder {
     public static final String DEFAULT_EMAIL = "amy@gmail.com";
     public static final String DEFAULT_ADDRESS = "123, Jurong West Ave 6, #08-111";
     public static final String DEFAULT_TRAINING_GOAL = "get a 6 pack";
+    public static final String DEFAULT_AVAILABILITY = "mon:0900-1000,tue:0000-2359,wed:0100-0300";
 
     private Name name;
     private Phone phone;
     private Email email;
     private Address address;
     private TrainingGoal trainingGoal;
+    private Availability availability;
 
     /**
      * Creates a {@code PersonBuilder} with the default details.
@@ -33,6 +36,7 @@ public class PersonBuilder {
         email = new Email(DEFAULT_EMAIL);
         address = new Address(DEFAULT_ADDRESS);
         trainingGoal = new TrainingGoal(DEFAULT_TRAINING_GOAL);
+        availability = new Availability(DEFAULT_AVAILABILITY);
     }
 
     /**
@@ -44,6 +48,7 @@ public class PersonBuilder {
         email = personToCopy.getEmail();
         address = personToCopy.getAddress();
         trainingGoal = personToCopy.getTrainingGoal();
+        availability = personToCopy.getAvailability();
     }
 
     /**
@@ -71,6 +76,14 @@ public class PersonBuilder {
     }
 
     /**
+     * Sets the {@code Availability} of the {@code Person} that we are building.
+     */
+    public PersonBuilder withAvailability(String availability) {
+        this.availability = new Availability(availability);
+        return this;
+    }
+
+    /**
      * Sets the {@code Phone} of the {@code Person} that we are building.
      */
     public PersonBuilder withPhone(String phone) {
@@ -87,7 +100,7 @@ public class PersonBuilder {
     }
 
     public Person build() {
-        return new Person(name, phone, email, address, trainingGoal);
+        return new Person(name, phone, email, address, trainingGoal, availability);
     }
 
 }

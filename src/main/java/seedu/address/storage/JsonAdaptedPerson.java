@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.person.Address;
+import seedu.address.model.person.Availability;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
@@ -23,6 +24,7 @@ class JsonAdaptedPerson {
     private final String email;
     private final String address;
     private final String trainingGoal;
+    private final String availability;
 
     /**
      * Constructs a {@code JsonAdaptedPerson} with the given person details.
@@ -30,12 +32,14 @@ class JsonAdaptedPerson {
     @JsonCreator
     public JsonAdaptedPerson(@JsonProperty("name") String name, @JsonProperty("phone") String phone,
             @JsonProperty("email") String email, @JsonProperty("address") String address,
-            @JsonProperty("trainingGoal") String trainingGoal) {
+            @JsonProperty("trainingGoal") String trainingGoal, @JsonProperty("availability") String availability) {
+
         this.name = name;
         this.phone = phone;
         this.email = email;
         this.address = address;
         this.trainingGoal = trainingGoal;
+        this.availability = availability;
     }
 
     /**
@@ -47,6 +51,7 @@ class JsonAdaptedPerson {
         email = source.getEmail().value;
         address = source.getAddress().value;
         trainingGoal = source.getTrainingGoal().value;
+        availability = source.getAvailability().value;
     }
 
     /**
@@ -95,8 +100,17 @@ class JsonAdaptedPerson {
             throw new IllegalValueException(TrainingGoal.MESSAGE_CONSTRAINTS);
         }
         final TrainingGoal modelTrainingGoal = new TrainingGoal(trainingGoal);
+      
+        if (availability == null) {
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
+                    Availability.class.getSimpleName()));
+        }
+        if (!Availability.isValidAvailability(availability)) {
+            throw new IllegalValueException(Availability.MESSAGE_CONSTRAINTS);
+        }
+        final Availability modelAvailability = new Availability(availability);
 
-        return new Person(modelName, modelPhone, modelEmail, modelAddress, modelTrainingGoal);
+        return new Person(modelName, modelPhone, modelEmail, modelAddress, modelTrainingGoal, modelAvailability);
     }
 
 }

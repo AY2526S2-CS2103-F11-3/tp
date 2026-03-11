@@ -52,7 +52,7 @@ public class Person {
         this.email = email;
         this.address = address;
         this.tags.addAll(tags);
-        this.skill = new Skill("novice");
+        this.skill = new Skill(Skill.SKILL_NOVICE);
     }
 
     public Name getName() {

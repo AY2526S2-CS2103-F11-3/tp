@@ -120,7 +120,7 @@ public class JsonAdaptedPersonTest {
         JsonAdaptedPerson person =
                 new JsonAdaptedPerson(VALID_NAME, VALID_PHONE, VALID_EMAIL, VALID_ADDRESS, null, VALID_TAGS);
         Person modelPerson = person.toModelType();
-        assertEquals(new Skill("novice"), modelPerson.getSkill());
+        assertEquals(new Skill(Skill.SKILL_NOVICE), modelPerson.getSkill());
     }
 
     @Test

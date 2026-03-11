@@ -3,9 +3,9 @@ package seedu.address.testutil;
 import java.util.HashSet;
 import java.util.Set;
 
-import main.java.seedu.address.model.person.InjuryStatus;
 import seedu.address.model.person.Address;
 import seedu.address.model.person.Email;
+import seedu.address.model.person.InjuryStatus;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
@@ -94,6 +94,9 @@ public class PersonBuilder {
         return this;
     }
 
+    /**
+     * Sets the {@code InjuryStatus} of the {@code Person} that we are building.
+     */
     public PersonBuilder withInjuryStatus(String injuryStatus) {
         this.injuryStatus = new InjuryStatus(injuryStatus);
         return this;

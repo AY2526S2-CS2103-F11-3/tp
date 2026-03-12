@@ -2,13 +2,9 @@ package seedu.address.model.person;
 
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
-import java.util.Collections;
-import java.util.HashSet;
 import java.util.Objects;
-import java.util.Set;
 
 import seedu.address.commons.util.ToStringBuilder;
-import seedu.address.model.tag.Tag;
 
 /**
  * Represents a Person in the address book.
@@ -23,19 +19,22 @@ public class Person {
 
     // Data fields
     private final Address address;
+    private final TrainingGoal trainingGoal;
+    private final Availability availability;
     private final Skill skill;
-    private final Set<Tag> tags = new HashSet<>();
 
     /**
      * Every field must be present and not null.
      */
-    public Person(Name name, Phone phone, Email email, Address address, Set<Tag> tags, Skill skill) {
-        requireAllNonNull(name, phone, email, address, tags, skill);
+    public Person(Name name, Phone phone, Email email, Address address, TrainingGoal trainingGoal,
+                  Availability availability, Skill skill) {
+        requireAllNonNull(name, phone, email, address, trainingGoal, availability, skill);
         this.name = name;
         this.phone = phone;
         this.email = email;
         this.address = address;
-        this.tags.addAll(tags);
+        this.trainingGoal = trainingGoal;
+        this.availability = availability;
         this.skill = skill;
     }
 
@@ -45,13 +44,15 @@ public class Person {
      *
      * This constructor is provided to support edit command.
      */
-    public Person(Name name, Phone phone, Email email, Address address, Set<Tag> tags) {
-        requireAllNonNull(name, phone, email, address, tags);
+    public Person(Name name, Phone phone, Email email, Address address, TrainingGoal trainingGoal,
+                  Availability availability) {
+        requireAllNonNull(name, phone, email, address, trainingGoal, availability);
         this.name = name;
         this.phone = phone;
         this.email = email;
         this.address = address;
-        this.tags.addAll(tags);
+        this.trainingGoal = trainingGoal;
+        this.availability = availability;
         this.skill = new Skill(Skill.SKILL_NOVICE);
     }
 
@@ -71,12 +72,12 @@ public class Person {
         return address;
     }
 
-    /**
-     * Returns an immutable tag set, which throws {@code UnsupportedOperationException}
-     * if modification is attempted.
-     */
-    public Set<Tag> getTags() {
-        return Collections.unmodifiableSet(tags);
+    public TrainingGoal getTrainingGoal() {
+        return trainingGoal;
+    }
+
+    public Availability getAvailability() {
+        return availability;
     }
 
     public Skill getSkill() {
@@ -116,14 +117,15 @@ public class Person {
                 && phone.equals(otherPerson.phone)
                 && email.equals(otherPerson.email)
                 && address.equals(otherPerson.address)
-                && skill.equals(otherPerson.skill)
-                && tags.equals(otherPerson.tags);
+                && trainingGoal.equals(otherPerson.trainingGoal)
+                && availability.equals(otherPerson.availability)
+                && skill.equals(otherPerson.skill);
     }
 
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(name, phone, email, address, tags, skill);
+        return Objects.hash(name, phone, email, address, trainingGoal, availability, skill);
     }
 
     @Override
@@ -133,7 +135,8 @@ public class Person {
                 .add("phone", phone)
                 .add("email", email)
                 .add("address", address)
-                .add("tags", tags)
+                .add("trainingGoal", trainingGoal)
+                .add("availability", availability)
                 .add("skill", skill)
                 .toString();
     }

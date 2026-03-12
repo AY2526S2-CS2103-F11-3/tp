@@ -28,8 +28,9 @@ public class Person {
     /**
      * Every field must be present and not null.
      */
-    public Person(Name name, Phone phone, Email email, Address address, InjuryStatus injuryStatus, TrainingGoal trainingGoal,
-                  Availability availability, Skill skill, ProgressRecord progressRecord) {
+    public Person(Name name, Phone phone, Email email, Address address,
+            InjuryStatus injuryStatus, TrainingGoal trainingGoal,
+            Availability availability, Skill skill, ProgressRecord progressRecord) {
         requireAllNonNull(name, phone, email, address, trainingGoal, availability, skill);
         this.name = name;
         this.phone = phone;
@@ -48,8 +49,9 @@ public class Person {
      *
      * This constructor is provided to support edit command.
      */
-    public Person(Name name, Phone phone, Email email, Address address, InjuryStatus injuryStatus, TrainingGoal trainingGoal,
-                  Availability availability, ProgressRecord progressRecord) {
+    public Person(Name name, Phone phone, Email email, Address address,
+            InjuryStatus injuryStatus, TrainingGoal trainingGoal,
+            Availability availability, ProgressRecord progressRecord) {
         requireAllNonNull(name, phone, email, address, injuryStatus, trainingGoal, availability);
         this.name = name;
         this.phone = phone;
@@ -142,7 +144,8 @@ public class Person {
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(name, phone, email, address, injuryStatus, trainingGoal, availability, skill, progressRecord);
+        return Objects.hash(name, phone, email, address, injuryStatus,
+            trainingGoal, availability, skill, progressRecord);
     }
 
     @Override

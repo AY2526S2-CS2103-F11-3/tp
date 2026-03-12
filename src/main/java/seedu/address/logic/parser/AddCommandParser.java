@@ -38,9 +38,9 @@ public class AddCommandParser implements Parser<AddCommand> {
      */
     public AddCommand parse(String args) throws ParseException {
         ArgumentMultimap argMultimap =
-                ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_PHONE, PREFIX_EMAIL,
-                    PREFIX_ADDRESS,
-                        PREFIX_INJURY_STATUS, PREFIX_TRAINING_GOAL, PREFIX_AVAILABILITY, PREFIX_SKILL, PREFIX_PROGRESS_RECORD);
+                ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_PHONE, PREFIX_EMAIL, PREFIX_ADDRESS,
+                        PREFIX_INJURY_STATUS, PREFIX_TRAINING_GOAL, PREFIX_AVAILABILITY,
+                        PREFIX_SKILL, PREFIX_PROGRESS_RECORD);
 
         if (!arePrefixesPresent(argMultimap, PREFIX_NAME, PREFIX_ADDRESS,
                 PREFIX_PHONE, PREFIX_EMAIL, PREFIX_TRAINING_GOAL, PREFIX_AVAILABILITY)
@@ -68,7 +68,8 @@ public class AddCommandParser implements Parser<AddCommand> {
         ProgressRecord progressRecord = ParserUtil.parseProgressRecord(
                 argMultimap.getValue(PREFIX_PROGRESS_RECORD).orElse(ProgressRecord.DEFAULT_PROGRESS));
 
-        Person person = new Person(name, phone, email, address, injuryStatus, trainingGoal, availability, skill, progressRecord);
+        Person person = new Person(name, phone, email, address, injuryStatus,
+            trainingGoal, availability, skill, progressRecord);
 
         return new AddCommand(person);
     }

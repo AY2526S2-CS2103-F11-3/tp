@@ -64,23 +64,13 @@ public class AddCommandParserTest {
 
     @Test
     public void parse_allFieldsPresent_success() {
-        Person expectedPerson = new PersonBuilder(BOB).withInjuryStatus("Recovered").withTrainingGoal(VALID_TRAINING_GOAL_BOB).build();
+        Person expectedPerson = new PersonBuilder(BOB).withInjuryStatus("Recovered")
+                .withTrainingGoal(VALID_TRAINING_GOAL_BOB).build();
 
         // whitespace only preamble
         assertParseSuccess(parser, PREAMBLE_WHITESPACE + NAME_DESC_BOB + PHONE_DESC_BOB + EMAIL_DESC_BOB
                 + ADDRESS_DESC_BOB + TRAINING_GOAL_DESC_BOB + AVAILABILITY_DESC_BOB
                 + SKILL_DESC_BOB + INJURY_STATUS_DESC_BOB, new AddCommand(expectedPerson));
-
-
-        // multiple tags - all accepted
-        Person expectedPersonMultipleTags = new PersonBuilder(BOB)
-                .withInjuryStatus("Recovered")
-                .withTags(VALID_TAG_FRIEND, VALID_TAG_HUSBAND)
-                .build();
-        assertParseSuccess(parser,
-                NAME_DESC_BOB + PHONE_DESC_BOB + EMAIL_DESC_BOB + ADDRESS_DESC_BOB
-                        + INJURY_STATUS_DESC_BOB + TAG_DESC_HUSBAND + TAG_DESC_FRIEND,
-                new AddCommand(expectedPersonMultipleTags));
     }
 
     @Test
@@ -254,12 +244,13 @@ public class AddCommandParserTest {
 
         // invalid injury status
         assertParseFailure(parser, NAME_DESC_BOB + PHONE_DESC_BOB + EMAIL_DESC_BOB + ADDRESS_DESC_BOB
-                + INVALID_INJURY_STATUS_DESC,
+                + INVALID_INJURY_STATUS_DESC + TRAINING_GOAL_DESC_BOB + AVAILABILITY_DESC_BOB,
                 InjuryStatus.MESSAGE_CONSTRAINTS);
 
         // invalid skill
         assertParseFailure(parser, NAME_DESC_BOB + PHONE_DESC_BOB + EMAIL_DESC_BOB + ADDRESS_DESC_BOB
-                + INJURY_STATUS_DESC_BOB + TRAINING_GOAL_DESC_BOB + AVAILABILITY_DESC_BOB + INVALID_SKILL_DESC, Skill.MESSAGE_CONSTRAINTS);
+                + INJURY_STATUS_DESC_BOB + TRAINING_GOAL_DESC_BOB + AVAILABILITY_DESC_BOB
+                + INVALID_SKILL_DESC, Skill.MESSAGE_CONSTRAINTS);
 
         // two invalid values, only first invalid value reported
         assertParseFailure(parser, INVALID_NAME_DESC + PHONE_DESC_BOB + EMAIL_DESC_BOB

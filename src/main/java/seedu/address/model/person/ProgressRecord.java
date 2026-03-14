@@ -10,11 +10,16 @@ public class ProgressRecord {
 
     public static final String MESSAGE_CONSTRAINTS = "Progress Records should be with 0% to 100%";
     public static final String DEFAULT_PROGRESS = "0%";
-    /*
+    /**
      * Validates that data is a percentage.
      * Example: 5%, 0.001%, 100%
      */
-    public static final String VALIDATION_REGEX = "^((100((\\.|,)[0-9]{1,2})?)|([0-9]{1,2}((\\.|,)[0-9]{0,2})?))%$";
+    public static final String PERCENTAGE_REGEX = "^((100((\\.|,)[0-9]{1,2})?)|([0-9]{1,2}((\\.|,)[0-9]{0,2})?))%$";
+    /**
+     * Fraction regex
+     */
+    public static final String FRACTION_REGEX = "^\\d+\\/\\d+$";
+    public static final String VALIDATION_REGEX = PERCENTAGE_REGEX + "|" + FRACTION_REGEX;
 
     public final String value;
     /**

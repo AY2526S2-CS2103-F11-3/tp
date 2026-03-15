@@ -43,6 +43,8 @@ public class PersonCard extends UiPart<Region> {
     private Label skill;
     @FXML
     private Label progressRecord;
+    @FXML
+    private Label trainingGoal;
 
     /**
      * Creates a {@code PersonCode} with the given {@code Person} and index to display.
@@ -54,10 +56,11 @@ public class PersonCard extends UiPart<Region> {
         name.setText(person.getName().fullName);
         phone.setText(person.getPhone().value);
         address.setText(person.getAddress().value);
-        availability.setText(person.getAvailability().value);
         email.setText(person.getEmail().value);
-        injuryStatus.setText(person.getInjuryStatus().value);
+        availability.setText(person.getAvailability().value);
+        trainingGoal.setText("Goal: " + person.getTrainingGoal().value);
         skill.setText("Skill: " + person.getSkill().value);
-        progressRecord.setText(person.getProgressRecord().value);
+        progressRecord.setText("Progress Record: " + person.getProgressRecord().value);
+        injuryStatus.setText("Injury: " + person.getInjuryStatus().value);
     }
 }

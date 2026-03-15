@@ -10,11 +10,11 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
 public class Skill {
 
     public static final String MESSAGE_CONSTRAINTS =
-            "Skill level must be one of these values: novice, intermediate, pro";
+            "Skill level must be one of these values: Beginner, Intermediate, Expert";
 
-    public static final String SKILL_NOVICE = "novice";
+    public static final String SKILL_BEGINNER = "beginner";
     public static final String SKILL_INTERMEDIATE = "intermediate";
-    public static final String SKILL_PRO = "pro";
+    public static final String SKILL_EXPERT = "expert";
 
     public final String value;
 
@@ -27,7 +27,7 @@ public class Skill {
         requireNonNull(skill);
         String normalizedSkill = skill.trim().toLowerCase();
         checkArgument(isValidSkill(normalizedSkill), MESSAGE_CONSTRAINTS);
-        value = normalizedSkill;
+        value = Character.toUpperCase(normalizedSkill.charAt(0)) + normalizedSkill.substring(1);
     }
 
     /**
@@ -36,9 +36,9 @@ public class Skill {
     public static boolean isValidSkill(String test) {
         requireNonNull(test);
         String normalizedSkill = test.trim().toLowerCase();
-        return normalizedSkill.equals(SKILL_NOVICE)
+        return normalizedSkill.equals(SKILL_BEGINNER)
                 || normalizedSkill.equals(SKILL_INTERMEDIATE)
-                || normalizedSkill.equals(SKILL_PRO);
+                || normalizedSkill.equals(SKILL_EXPERT);
     }
 
     @Override

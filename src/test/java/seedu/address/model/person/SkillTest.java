@@ -28,20 +28,20 @@ public class SkillTest {
         assertFalse(Skill.isValidSkill("")); // empty string
         assertFalse(Skill.isValidSkill(" ")); // spaces only
         assertFalse(Skill.isValidSkill("master")); // unsupported skill level
-        assertFalse(Skill.isValidSkill("beginner")); // unsupported skill level
+        assertFalse(Skill.isValidSkill("pro")); // unsupported skill level
 
         // valid skill levels
-        assertTrue(Skill.isValidSkill("novice"));
-        assertTrue(Skill.isValidSkill("intermediate"));
-        assertTrue(Skill.isValidSkill("pro"));
+        assertTrue(Skill.isValidSkill("beginnEr"));
+        assertTrue(Skill.isValidSkill("inteRmediate"));
+        assertTrue(Skill.isValidSkill("Expert"));
     }
 
     @Test
     public void equals() {
-        Skill skill = new Skill("novice");
+        Skill skill = new Skill("exPert");
 
         // same values -> returns true
-        assertTrue(skill.equals(new Skill("novice")));
+        assertTrue(skill.equals(new Skill("Expert")));
 
         // same object -> returns true
         assertTrue(skill.equals(skill));
@@ -53,6 +53,6 @@ public class SkillTest {
         assertFalse(skill.equals(5.0f));
 
         // different values -> returns false
-        assertFalse(skill.equals(new Skill("pro")));
+        assertFalse(skill.equals(new Skill("beginner")));
     }
 }

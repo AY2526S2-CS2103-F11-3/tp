@@ -5,6 +5,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
 import seedu.address.model.person.Person;
+import seedu.address.model.person.Skill;
 
 /**
  * An UI component that displays information of a {@code Person}.
@@ -57,10 +58,25 @@ public class PersonCard extends UiPart<Region> {
         phone.setText(person.getPhone().value);
         address.setText(person.getAddress().value);
         email.setText(person.getEmail().value);
-        availability.setText(person.getAvailability().value);
-        trainingGoal.setText("Goal: " + person.getTrainingGoal().value);
-        skill.setText("Skill: " + person.getSkill().value);
-        progressRecord.setText("Progress Record: " + person.getProgressRecord().value);
-        injuryStatus.setText("Injury: " + person.getInjuryStatus().value);
+        injuryStatus.setText(person.getInjuryStatus().value);
+        progressRecord.setText(person.getProgressRecord().value);
+
+        // Customised style for skill
+        String skillLevel = person.getSkill().value;
+        skill.setText(skillLevel);
+        switch (skillLevel.toLowerCase()) {
+        case Skill.SKILL_NOVICE:
+            skill.getStyleClass().add("skill-beginner");
+            break;
+        case Skill.SKILL_INTERMEDIATE:
+            skill.getStyleClass().add("skill-intermediate");
+            break;
+        case Skill.SKILL_PRO:
+            skill.getStyleClass().add("skill-advanced");
+            break;
+        default:
+            skill.getStyleClass().add("skill-beginner");
+            break;
+        }
     }
 }

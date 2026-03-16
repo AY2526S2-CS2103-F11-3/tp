@@ -17,23 +17,40 @@
       <padding>
         <Insets top="5" right="5" bottom="5" left="15" />
       </padding>
-      <HBox spacing="0.5" alignment="CENTER_LEFT">
-        <Label fx:id="id" styleClass="cell_big_label">
-          <minWidth>
-            <!-- Ensures that the label text is never truncated -->
-            <Region fx:constant="USE_PREF_SIZE" />
-          </minWidth>
-        </Label>
-        <Label fx:id="name" text="\$first" styleClass="cell_big_label" />
+
+      <HBox alignment="CENTER_LEFT" spacing="10">
+        <HBox alignment="CENTER_LEFT" spacing="5">
+          <Label fx:id="id" styleClass="cell_big_label">
+            <minWidth>
+              <!-- Ensures that the label text is never truncated -->
+              <Region fx:constant="USE_PREF_SIZE" />
+            </minWidth>
+          </Label>
+          <Label fx:id="name" text="\$first" styleClass="cell_big_label" />
+        </HBox>
+        <Region HBox.hgrow="ALWAYS" />
+        <Label fx:id="skill" styleClass="skill_tag_label" text="\$skill" />
       </HBox>
-      <Label fx:id="phone" styleClass="cell_small_label" text="\$phone" />
-      <Label fx:id="address" styleClass="cell_small_label" text="\$address" />
-      <Label fx:id="email" styleClass="cell_small_label" text="\$email" />
-      <Label fx:id="availability" styleClass="cell_small_label" text="\$availability" />
-      <Label fx:id="trainingGoal" styleClass="cell_small_label" text="\$trainingGoal" />
-      <Label fx:id="skill" styleClass="cell_small_label" text="\$skill" />
-      <Label fx:id="progressRecord" styleClass="cell_small_label" text="\$progressRecord" />
-      <Label fx:id="injuryStatus" styleClass="cell_small_label" text="\$injuryStatus" />
+      
+      <VBox spacing="4">
+        <Label fx:id="phone" styleClass="cell_small_label" text="\$phone" />
+        <Label fx:id="address" styleClass="cell_small_label" text="\$address" />
+        <Label fx:id="email" styleClass="cell_small_label" text="\$email" />
+      </VBox>
+
+      <Region styleClass="divider" prefHeight="1" minHeight="1" maxHeight="1">
+        <VBox.margin>
+          <Insets top="5" bottom="5" left="0" right="0" />
+        </VBox.margin>
+      </Region>
+
+      <VBox spacing="4">
+        <Label text="Availability:" styleClass="availability_label" />
+        <Label fx:id="availability" styleClass="availability_label" text="\$availability" />
+        <Label text="Progress:" styleClass="progress_label" />
+        <Label fx:id="progressRecord" styleClass="progress_label" text="\$progressRecord" />
+        <Label fx:id="injuryStatus" styleClass="cell_small_label" text="\$injuryStatus" />
+      </VBox>
     </VBox>
   </GridPane>
 </HBox>

@@ -8,6 +8,7 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_INJURY_STATUS;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_SKILL;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_PROGRESS_RECORD;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TRAINING_GOAL;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
 
@@ -49,6 +50,7 @@ public class EditCommand extends Command {
             + "[" + PREFIX_ADDRESS + "ADDRESS] "
             + "[" + PREFIX_AVAILABILITY + "AVAILABILITY]"
             + "[" + PREFIX_TRAINING_GOAL + "TRAINING GOAL] "
+            + "[" + PREFIX_PROGRESS_RECORD + "PROGRESS_RECORD] "
             + "[" + PREFIX_INJURY_STATUS + "INJURY_STATUS] "
             + "[" + PREFIX_SKILL + "SKILL]\n"
             + "Example: " + COMMAND_WORD + " 1 "
@@ -292,6 +294,7 @@ public class EditCommand extends Command {
                     .add("injuryStatus", injuryStatus)
                     .add("trainingGoal", trainingGoal)
                     .add("availability", availability)
+                    .add("progressRecord", progressRecord)
                     .add("skill", skill)
                     .toString();
         }

@@ -41,14 +41,12 @@ public class PersonTest {
 
         // same name, different phone -> returns false
         Person editedBob = new PersonBuilder(BOB)
-            .withPhone(VALID_PHONE_AMY)
-            .build();
+            .withPhone(VALID_PHONE_AMY).build();
         assertFalse(BOB.isSamePerson(editedBob));
 
         // different name, same phone -> returns true
         editedBob = new PersonBuilder(BOB)
-            .withName(VALID_NAME_AMY)
-            .build();
+            .withName(VALID_NAME_AMY).build();
         assertTrue(BOB.isSamePerson(editedBob));
     }
 

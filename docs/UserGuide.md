@@ -20,7 +20,7 @@ PTcoach is a **desktop app for managing client contacts, optimized for use via a
 
 2. Download the latest `.jar` file from [here](https://github.com/AY2526S2-CS2103-F11-3/tp/releases).
 
-3. Copy the file to the folder you want to use as the _home folder_ for your AddressBook.
+3. Copy the file to the folder you want to use as the _home folder_ for your PTcoach.
 
 4. Open a command terminal, `cd` into the folder you put the jar file in, and use the `java -jar PTcoach.jar` command to run the application.<br>
    A GUI similar to the below should appear in a few seconds. Note how the app contains some sample data.<br>
@@ -55,8 +55,8 @@ PTcoach is a **desktop app for managing client contacts, optimized for use via a
 * Items in square brackets are optional.<br>
   e.g `n/NAME [s/SKILL]` can be used as `n/John Doe s/intermediate` or as `n/John Doe`.
 
-[//]: # (* Items with `…`​ after them can be used multiple times including zero times.<br>)
-[//]: # (  e.g. `[t/TAG]…​` can be used as ` ` &#40;i.e. 0 times&#41;, `t/friend`, `t/friend t/family` etc.)
+  [//]: # (* Items with `…`​ after them can be used multiple times including zero times.<br>)
+  [//]: # (  e.g. `[t/TAG]…​` can be used as ` ` &#40;i.e. 0 times&#41;, `t/friend`, `t/friend t/family` etc.)
 
 * Parameters can be in any order.<br>
   e.g. if the command specifies `n/NAME p/PHONE_NUMBER`, `p/PHONE_NUMBER n/NAME` is also acceptable.
@@ -80,7 +80,7 @@ Format: `help`
 
 Adds a person to the address book.
 
-Format: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS t/TRAINING_GOAL av/AVAILABILITY [i/INJURY_STATUS] [s/SKILL] [pr/PROGRESS_RECORD]`
+Format: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS av/AVAILABILITY t/TRAINING_GOAL [pr/PROGRESS_RECORD] [i/INJURY_STATUS] [s/SKILL]`
 
 [//]: # (<box type="tip" seamless>)
 
@@ -89,7 +89,7 @@ Format: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS t/TRAINING_GOAL av/AVAILABI
 
 Examples:
 * `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01 t/run 50km av/mon:0800-0900 i/shoulder dislocate`
-* `add n/Betsy Crowe t/friend e/betsycrowe@example.com a/Newgate Prison p/1234567 t/lift 100kg av/mon:0900-1000;tue:1000-1100`
+* `add n/Betsy Crowe e/betsycrowe@example.com a/Newgate Prison p/1234567 t/lift 100kg av/mon:0900-1000;tue:1000-1100`
 
 ### Listing all persons : `list`
 
@@ -101,7 +101,7 @@ Format: `list`
 
 Edits an existing person in the address book.
 
-Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [i/INJURY_STATUS] [t/TRAINING GOAL] [av/AVAILABILITY] [pr/PROGRESS_RECORD]`
+Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [av/AVAILABILITY] [t/TRAINING GOAL] [pr/PROGRESS_RECORD] [i/INJURY_STATUS] [s/SKILL]`
 
 * Edits the person at the specified `INDEX`. The index refers to the index number shown in the displayed person list. The index **must be a positive integer** 1, 2, 3, …​
 * At least one of the optional fields must be provided.
@@ -201,7 +201,7 @@ Action     | Format, Examples
 **Add**    | `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS t/TRAINING_GOAL av/AVAILABILITY [i/INJURY_STATUS] [s/SKILL] [pr/PROGRESS_RECORD]` <br> e.g., `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 t/run 100km av/sat:1000-1100`
 **Clear**  | `clear`
 **Delete** | `delete INDEX`<br> e.g., `delete 3`
-**Edit**   | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [i/INJURY_STATUS] [t/TRAINING GOAL] [av/AVAILABILITY] [pr/PROGRESS_RECORD]`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`
+**Edit**   | `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [av/AVAILABILITY] [t/TRAINING GOAL] [pr/PROGRESS_RECORD] [i/INJURY_STATUS] [s/SKILL]`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`
 **Find**   | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`
 **List**   | `list`
 **Help**   | `help`

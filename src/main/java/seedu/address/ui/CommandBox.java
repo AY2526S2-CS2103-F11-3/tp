@@ -36,17 +36,20 @@ public class CommandBox extends UiPart<Region> {
         });
     }
 
-
     @FXML
-    private void handleNavigate(KeyEvent e) {
-        if (e.getCode() == KeyCode.UP) {
-            String lastCommand = commandHistory.navigateUp();
-            commandTextField.setText(lastCommand);
+    private void handleNavigate(KeyEvent key) {
+        KeyCode code = key.getCode();
+        String commandFromHistory;
+        if (code == KeyCode.UP) {
+            commandFromHistory = commandHistory.navigateUp();
+        } else if (code == KeyCode.DOWN) {
+            commandFromHistory = commandHistory.navigateDown();
+        } else {
+            return;
         }
-        if (e.getCode() == KeyCode.DOWN) {
-            String lastCommand = commandHistory.navigateDown();
-            commandTextField.setText(lastCommand);
-        }
+        commandTextField.setText(commandFromHistory);
+        commandTextField.positionCaret(commandFromHistory.length());
+        commandTextField.requestFocus();
     }
     /**
      * Handles the Enter button pressed event.

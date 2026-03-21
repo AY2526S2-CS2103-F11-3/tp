@@ -1,6 +1,7 @@
 package seedu.address.ui;
 
 import static java.lang.Integer.max;
+import static java.lang.Integer.min;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -57,10 +58,16 @@ public class CommandHistory {
      * @return The next command string in the history.
      */
     public String navigateDown() {
-        if (commandHistory.isEmpty() || current >= commandHistory.size()) {
+        int historySize = commandHistory.size();
+
+        // Increment pointer, but cap it at the "blank line" index (historySize)
+        current = min(historySize, current + 1);
+
+        // If we've reached the blank line index, return empty string
+        if (current == historySize) {
             return "";
         }
-        current = max(current + 1, commandHistory.size() - 1);
+
         return commandHistory.get(current);
     }
 

@@ -57,10 +57,6 @@ public class ListCommandParser implements Parser<ListCommand> {
         ArgumentMultimap argMultimap =
                 ArgumentTokenizer.tokenize(args, PREFIX_SKILL);
 
-        if (!argMultimap.getPreamble().isEmpty()) {
-            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, ListCommand.MESSAGE_USAGE));
-        }
-
         // Check for any tokens that are not the skill prefix by re-tokenizing
         // against all known prefixes and checking if any unknown ones have values
         ArgumentMultimap allPrefixesMap =
@@ -75,7 +71,8 @@ public class ListCommandParser implements Parser<ListCommand> {
                 || allPrefixesMap.getValue(PREFIX_AVAILABILITY).isPresent()
                 || allPrefixesMap.getValue(PREFIX_TRAINING_GOAL).isPresent()
                 || allPrefixesMap.getValue(PREFIX_PROGRESS_RECORD).isPresent()
-                || allPrefixesMap.getValue(PREFIX_INJURY_STATUS).isPresent()) {
+                || allPrefixesMap.getValue(PREFIX_INJURY_STATUS).isPresent()
+                || !argMultimap.getPreamble().isEmpty()) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, ListCommand.MESSAGE_USAGE));
         }
 

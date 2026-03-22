@@ -1,6 +1,5 @@
 package seedu.address.testutil;
 
-import java.util.HashSet;
 import java.util.Set;
 import java.util.TreeSet;
 
@@ -157,6 +156,11 @@ public class PersonBuilder {
         return this;
     }
 
+    /**
+     * Builds a person with all specified attributes.
+     *
+     * @return Person built with the specified attributes.
+     */
     public Person build() {
         return new Person(name, phone, email, address, injuryStatus, trainingGoal, availability, timeslots,
                 progressRecord, skill);

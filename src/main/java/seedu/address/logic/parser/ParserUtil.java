@@ -126,7 +126,9 @@ public class ParserUtil {
         requireNonNull(timeslots);
         final Set<Timeslot> timeslotSet = new TreeSet<>();
         for (String timeslot : timeslots) {
-            timeslotSet.add(parseTimeslot(timeslot));
+            for (String dayTimeslot : timeslot.split(";")) {
+                timeslotSet.add(parseTimeslot(dayTimeslot));
+            }
         }
         return timeslotSet;
     }

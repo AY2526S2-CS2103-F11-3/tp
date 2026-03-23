@@ -13,7 +13,6 @@ import java.util.List;
  * through previous commands, similar to a terminal or command-line interface.
  * It maintains an internal pointer to track the user's current position within
  * the history list.
- * </p>
  */
 public class CommandHistory {
     private final List<String> commandHistory = new ArrayList<String>();
@@ -32,7 +31,6 @@ public class CommandHistory {
      * <p>
      * If the history is empty, an empty string is returned. If the pointer is already
      * at the earliest command, that command is returned without further decrementing the pointer.
-     * </p>
      *
      * @return The previous command string in the history.
      */
@@ -53,7 +51,6 @@ public class CommandHistory {
      * If the history is empty or the pointer is already at the end of the history,
      * an empty string is returned. Otherwise, the pointer moves forward and returns
      * the next command.
-     * </p>
      *
      * @return The next command string in the history.
      */

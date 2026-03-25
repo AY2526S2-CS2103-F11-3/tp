@@ -18,6 +18,8 @@ Class Address
 Class Email
 Class Name
 Class Phone
+Class Tag
+Class Skill
 Class Timeslot
 
 Class I #FFFFFF
@@ -41,6 +43,8 @@ Person *--> Name
 Person *--> Phone
 Person *--> Email
 Person *--> Address
+Person *--> "*" Tag
+Person *--> Skill
 Person *--> "*" Timeslot
 
 Person -[hidden]up--> I

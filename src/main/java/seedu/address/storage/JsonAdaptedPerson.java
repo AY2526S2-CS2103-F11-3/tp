@@ -158,7 +158,8 @@ class JsonAdaptedPerson {
      */
     private Availability toModelAvailability() throws IllegalValueException {
         if (availability == null) {
-            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Availability.class.getSimpleName()));
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
+                    Availability.class.getSimpleName()));
         }
         if (!Availability.isValidAvailability(availability)) {
             throw new IllegalValueException(formatInvalidFieldMessage(Availability.class.getSimpleName(),

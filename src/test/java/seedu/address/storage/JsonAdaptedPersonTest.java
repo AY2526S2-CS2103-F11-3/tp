@@ -124,7 +124,7 @@ public class JsonAdaptedPersonTest {
 
     @Test
     public void toModelType_nullAddress_throwsIllegalValueException() {
-            JsonAdaptedPerson person =
+        JsonAdaptedPerson person =
             new JsonAdaptedPerson(VALID_NAME, VALID_PHONE,
                 VALID_EMAIL, null, VALID_AVAILABILITY, VALID_TRAINING_GOAL,
                         VALID_PROGRESS_RECORD, VALID_INJURY_STATUS, VALID_SKILL);

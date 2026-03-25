@@ -87,6 +87,11 @@ class JsonAdaptedPerson {
                 modelAvailability, modelProgressRecord, modelSkill);
     }
 
+    /**
+     * Converts the stored name string to a model {@code Name} after validating format.
+     *
+     * @throws IllegalValueException if name is missing or invalid.
+     */
     private Name toModelName() throws IllegalValueException {
         if (name == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Name.class.getSimpleName()));
@@ -98,6 +103,11 @@ class JsonAdaptedPerson {
         return new Name(name);
     }
 
+    /**
+     * Converts the stored phone string to a model {@code Phone} after validating format.
+     *
+     * @throws IllegalValueException if phone is missing or invalid.
+     */
     private Phone toModelPhone() throws IllegalValueException {
         if (phone == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Phone.class.getSimpleName()));
@@ -109,6 +119,11 @@ class JsonAdaptedPerson {
         return new Phone(phone);
     }
 
+    /**
+     * Converts the stored email string to a model {@code Email} after validating format.
+     *
+     * @throws IllegalValueException if email is missing or invalid.
+     */
     private Email toModelEmail() throws IllegalValueException {
         if (email == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Email.class.getSimpleName()));
@@ -120,6 +135,11 @@ class JsonAdaptedPerson {
         return new Email(email);
     }
 
+    /**
+     * Converts the stored address string to a model {@code Address} validating format.
+     *
+     * @throws IllegalValueException if address is missing or invalid.
+     */
     private Address toModelAddress() throws IllegalValueException {
         if (address == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Address.class.getSimpleName()));
@@ -131,6 +151,11 @@ class JsonAdaptedPerson {
         return new Address(address);
     }
 
+    /**
+     * Converts the stored availability string to a model {@code Availability} validating format.
+     *
+     * @throws IllegalValueException if availability is missing or invalid.
+     */
     private Availability toModelAvailability() throws IllegalValueException {
         if (availability == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Availability.class.getSimpleName()));
@@ -142,6 +167,11 @@ class JsonAdaptedPerson {
         return new Availability(availability);
     }
 
+    /**
+     * Converts the stored training goal string to a model {@code TrainingGoal} validating format.
+     *
+     * @throws IllegalValueException if training goal is missing or invalid.
+     */
     private TrainingGoal toModelTrainingGoal() throws IllegalValueException {
         if (trainingGoal == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
@@ -154,6 +184,11 @@ class JsonAdaptedPerson {
         return new TrainingGoal(trainingGoal);
     }
 
+    /**
+     * Converts the stored progress record string to a model {@code ProgressRecord}, default if absent.
+     *
+     * @throws IllegalValueException if the derived progress value is invalid.
+     */
     private ProgressRecord toModelProgressRecord() throws IllegalValueException {
         String record = progressRecord == null ? ProgressRecord.DEFAULT_PROGRESS : progressRecord;
         if (!ProgressRecord.isValidProgress(record)) {
@@ -163,6 +198,11 @@ class JsonAdaptedPerson {
         return new ProgressRecord(record);
     }
 
+    /**
+     * Converts the stored injury status string to a model {@code InjuryStatus}, default if absent.
+     *
+     * @throws IllegalValueException if the stored injury status is invalid.
+     */
     private InjuryStatus toModelInjuryStatus() throws IllegalValueException {
         if (injuryStatus == null) {
             return new InjuryStatus(InjuryStatus.DEFAULT_INJURY_STATUS);
@@ -174,6 +214,11 @@ class JsonAdaptedPerson {
         return new InjuryStatus(injuryStatus);
     }
 
+    /**
+     * Converts the stored skill string to a model {@code Skill}, default if absent.
+     *
+     * @throws IllegalValueException if the stored skill is invalid.
+     */
     private Skill toModelSkill() throws IllegalValueException {
         if (skill == null) {
             return new Skill(Skill.SKILL_BEGINNER);
@@ -185,6 +230,9 @@ class JsonAdaptedPerson {
         return new Skill(skill);
     }
 
+    /**
+     * Formats a constraint failure message that includes the offending field and value.
+     */
     private static String formatInvalidFieldMessage(String fieldName, String expected, String actualValue) {
         return String.format("Invalid value for %s: \"%s\". Expected: %s", fieldName, actualValue, expected);
     }

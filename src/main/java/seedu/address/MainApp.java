@@ -88,7 +88,8 @@ public class MainApp extends Application {
             initialData = addressBookOptional.orElseGet(SampleDataUtil::getSampleAddressBook);
         } catch (DataLoadingException e) {
             String userMessage = StartupErrorMessage.build(storage.getAddressBookFilePath(), e);
-            logger.warning(userMessage);
+            logger.warning("Data file at " + storage.getAddressBookFilePath() + " could not be loaded."
+                    + " Will be starting with an empty AddressBook.");
             startupErrorMessage = userMessage;
             initialData = new AddressBook();
         }

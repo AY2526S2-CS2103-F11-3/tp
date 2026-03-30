@@ -17,6 +17,8 @@ import static seedu.address.logic.commands.CommandTestUtil.PHONE_DESC_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.PHONE_DESC_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.SKILL_DESC_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.SKILL_DESC_BOB;
+import static seedu.address.logic.commands.CommandTestUtil.TIMESLOT_DESC_AMY;
+import static seedu.address.logic.commands.CommandTestUtil.TIMESLOT_DESC_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.TRAINING_GOAL_DESC_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.TRAINING_GOAL_DESC_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_ADDRESS_AMY;
@@ -25,6 +27,7 @@ import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_PHONE_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_PHONE_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_SKILL_AMY;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_TIMESLOT_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TRAINING_GOAL_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TRAINING_GOAL_BOB;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ADDRESS;
@@ -96,8 +99,8 @@ public class EditCommandParserTest {
                 TrainingGoal.MESSAGE_CONSTRAINTS); // invalid trainingGoal
         assertParseFailure(parser, "1" + INVALID_TIMESLOT_DESC,
                 Timeslot.MESSAGE_CONSTRAINTS); // invalid timeslot
-        assertParseFailure(parser, "1" + " " + PREFIX_TIMESLOT,
-                Timeslot.MESSAGE_CONSTRAINTS); // no timeslot specified
+        assertParseFailure(parser, "1 " + PREFIX_TIMESLOT,
+                Timeslot.MESSAGE_CONSTRAINTS); // empty timeslot
 
         // invalid phone followed by valid email
         assertParseFailure(parser, "1" + INVALID_PHONE_DESC + EMAIL_DESC_AMY, Phone.MESSAGE_CONSTRAINTS);
@@ -112,11 +115,12 @@ public class EditCommandParserTest {
     public void parse_allFieldsSpecified_success() {
         Index targetIndex = INDEX_SECOND_PERSON;
         String userInput = targetIndex.getOneBased() + PHONE_DESC_BOB + EMAIL_DESC_AMY + ADDRESS_DESC_AMY
-                + NAME_DESC_AMY + TRAINING_GOAL_DESC_AMY + SKILL_DESC_AMY;
+                + NAME_DESC_AMY + TRAINING_GOAL_DESC_AMY + SKILL_DESC_AMY + TIMESLOT_DESC_AMY;
 
         EditPersonDescriptor descriptor = new EditPersonDescriptorBuilder().withName(VALID_NAME_AMY)
                 .withPhone(VALID_PHONE_BOB).withEmail(VALID_EMAIL_AMY).withAddress(VALID_ADDRESS_AMY)
-                .withTrainingGoal(VALID_TRAINING_GOAL_AMY).withSkill(VALID_SKILL_AMY).build();
+                .withTrainingGoal(VALID_TRAINING_GOAL_AMY).withSkill(VALID_SKILL_AMY)
+                .withTimeslots(VALID_TIMESLOT_AMY).build();
         EditCommand expectedCommand = new EditCommand(targetIndex, descriptor);
 
         assertParseSuccess(parser, userInput, expectedCommand);
@@ -172,6 +176,12 @@ public class EditCommandParserTest {
         descriptor = new EditPersonDescriptorBuilder().withSkill(VALID_SKILL_AMY).build();
         expectedCommand = new EditCommand(targetIndex, descriptor);
         assertParseSuccess(parser, userInput, expectedCommand);
+
+        // timeslots
+        userInput = targetIndex.getOneBased() + TIMESLOT_DESC_AMY;
+        descriptor = new EditPersonDescriptorBuilder().withTimeslots(VALID_TIMESLOT_AMY).build();
+        expectedCommand = new EditCommand(targetIndex, descriptor);
+        assertParseSuccess(parser, userInput, expectedCommand);
     }
 
     @Test
@@ -192,21 +202,22 @@ public class EditCommandParserTest {
 
         // multiple valid fields repeated
         userInput = targetIndex.getOneBased() + PHONE_DESC_AMY + ADDRESS_DESC_AMY + EMAIL_DESC_AMY
-                + TRAINING_GOAL_DESC_BOB + SKILL_DESC_AMY + PHONE_DESC_AMY
-                + ADDRESS_DESC_AMY + EMAIL_DESC_AMY + TRAINING_GOAL_DESC_BOB + SKILL_DESC_BOB
+                + TRAINING_GOAL_DESC_BOB + SKILL_DESC_AMY + PHONE_DESC_AMY + TIMESLOT_DESC_AMY
+                + ADDRESS_DESC_AMY + EMAIL_DESC_AMY + TRAINING_GOAL_DESC_BOB + SKILL_DESC_BOB + TIMESLOT_DESC_BOB
                 + PHONE_DESC_BOB + ADDRESS_DESC_BOB + EMAIL_DESC_BOB + TRAINING_GOAL_DESC_AMY;
 
         assertParseFailure(parser, userInput,
                 Messages.getErrorMessageForDuplicatePrefixes(PREFIX_PHONE, PREFIX_EMAIL,
-                        PREFIX_ADDRESS, PREFIX_TRAINING_GOAL, PREFIX_SKILL));
+                        PREFIX_ADDRESS, PREFIX_TRAINING_GOAL, PREFIX_SKILL, PREFIX_TIMESLOT));
 
         // multiple invalid values
         userInput = targetIndex.getOneBased() + INVALID_PHONE_DESC + INVALID_ADDRESS_DESC + INVALID_EMAIL_DESC
-                + INVALID_TRAINING_GOAL_DESC + INVALID_SKILL_DESC + INVALID_PHONE_DESC + INVALID_ADDRESS_DESC
-                + INVALID_EMAIL_DESC + INVALID_TRAINING_GOAL_DESC + INVALID_SKILL_DESC;
+                + INVALID_TRAINING_GOAL_DESC + INVALID_SKILL_DESC + INVALID_TIMESLOT_DESC + INVALID_PHONE_DESC
+                + INVALID_ADDRESS_DESC + INVALID_EMAIL_DESC + INVALID_TRAINING_GOAL_DESC + INVALID_SKILL_DESC
+                + INVALID_TIMESLOT_DESC;
 
         assertParseFailure(parser, userInput,
                 Messages.getErrorMessageForDuplicatePrefixes(PREFIX_PHONE, PREFIX_EMAIL,
-                        PREFIX_ADDRESS, PREFIX_TRAINING_GOAL, PREFIX_SKILL));
+                        PREFIX_ADDRESS, PREFIX_TRAINING_GOAL, PREFIX_SKILL, PREFIX_TIMESLOT));
     }
 }

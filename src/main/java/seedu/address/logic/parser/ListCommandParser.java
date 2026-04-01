@@ -14,10 +14,11 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_TRAINING_GOAL;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import seedu.address.logic.commands.ListCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.model.person.FilteredSkill;
+import seedu.address.model.person.Skill;
 
 /**
  * Parses input arguments and creates a new {@code ListCommand} object.
@@ -79,9 +80,9 @@ public class ListCommandParser implements Parser<ListCommand> {
         List<String> skillValues = argMultimap.getAllValues(PREFIX_SKILL);
 
         if (!skillValues.isEmpty()) {
-            List<FilteredSkill> skills = new ArrayList<>();
+            List<Skill> skills = new ArrayList<>();
             for (String skillValue : skillValues) {
-                skills.add(ParserUtil.parseFilteredSkill(skillValue));
+                skills.add(ParserUtil.parseSkill(Optional.of(skillValue)));
             }
             return new ListCommand(skills);
         } else {

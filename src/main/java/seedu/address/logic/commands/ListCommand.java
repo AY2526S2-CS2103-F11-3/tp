@@ -6,7 +6,7 @@ import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
 import java.util.List;
 
 import seedu.address.model.Model;
-import seedu.address.model.person.FilteredSkill;
+import seedu.address.model.person.Skill;
 
 /**
  * Lists all persons in the address book to the user.
@@ -30,7 +30,7 @@ public class ListCommand extends Command {
             + "Parameters: [s/SKILL]\n"
             + "Example: " + COMMAND_WORD + " s/beginner";
 
-    private final List<FilteredSkill> skills;
+    private final List<Skill> skills;
 
     /**
      * Creates a {@code ListCommand} that lists all persons without any filter.
@@ -46,7 +46,7 @@ public class ListCommand extends Command {
      * @param skillLevels the skill levels to filter by; must not be null or empty
      * @throws NullPointerException if {@code skillLevels} is null
      */
-    public ListCommand(List<FilteredSkill> skillLevels) {
+    public ListCommand(List<Skill> skillLevels) {
         requireNonNull(skillLevels);
         this.skills = skillLevels;
     }

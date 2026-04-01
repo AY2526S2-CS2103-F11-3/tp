@@ -10,7 +10,8 @@ import static seedu.address.logic.commands.CommandTestUtil.INVALID_EMAIL_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_NAME_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_PHONE_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_SKILL_DESC;
-import static seedu.address.logic.commands.CommandTestUtil.INVALID_TIMESLOT_DESC;
+import static seedu.address.logic.commands.CommandTestUtil.INVALID_TIMESLOT_DESC_1;
+import static seedu.address.logic.commands.CommandTestUtil.INVALID_TIMESLOT_DESC_2;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_TRAINING_GOAL_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.NAME_DESC_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.PHONE_DESC_AMY;
@@ -97,7 +98,9 @@ public class EditCommandParserTest {
         assertParseFailure(parser, "1" + INVALID_SKILL_DESC, Skill.MESSAGE_CONSTRAINTS); // invalid skill
         assertParseFailure(parser, "1" + INVALID_TRAINING_GOAL_DESC,
                 TrainingGoal.MESSAGE_CONSTRAINTS); // invalid trainingGoal
-        assertParseFailure(parser, "1" + INVALID_TIMESLOT_DESC,
+        assertParseFailure(parser, "1" + INVALID_TIMESLOT_DESC_1,
+                Timeslot.MESSAGE_CONSTRAINTS); // invalid timeslot
+        assertParseFailure(parser, "1" + INVALID_TIMESLOT_DESC_2,
                 Timeslot.MESSAGE_CONSTRAINTS); // invalid timeslot
         assertParseFailure(parser, "1 " + PREFIX_TIMESLOT,
                 Timeslot.MESSAGE_CONSTRAINTS); // empty timeslot
@@ -212,9 +215,9 @@ public class EditCommandParserTest {
 
         // multiple invalid values
         userInput = targetIndex.getOneBased() + INVALID_PHONE_DESC + INVALID_ADDRESS_DESC + INVALID_EMAIL_DESC
-                + INVALID_TRAINING_GOAL_DESC + INVALID_SKILL_DESC + INVALID_TIMESLOT_DESC + INVALID_PHONE_DESC
+                + INVALID_TRAINING_GOAL_DESC + INVALID_SKILL_DESC + INVALID_TIMESLOT_DESC_1 + INVALID_PHONE_DESC
                 + INVALID_ADDRESS_DESC + INVALID_EMAIL_DESC + INVALID_TRAINING_GOAL_DESC + INVALID_SKILL_DESC
-                + INVALID_TIMESLOT_DESC;
+                + INVALID_TIMESLOT_DESC_1;
 
         assertParseFailure(parser, userInput,
                 Messages.getErrorMessageForDuplicatePrefixes(PREFIX_PHONE, PREFIX_EMAIL,

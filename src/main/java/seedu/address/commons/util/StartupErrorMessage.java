@@ -1,6 +1,7 @@
 package seedu.address.commons.util;
 
 import java.nio.file.Path;
+import java.util.Optional;
 
 import seedu.address.commons.exceptions.DataLoadingException;
 
@@ -20,7 +21,16 @@ public final class StartupErrorMessage {
      */
     public static String build(Path dataFilePath, DataLoadingException exception) {
         String reason = getUserFacingErrorMessage(exception);
-        return String.format(WARNING_MESSAGE_FORMAT, dataFilePath, reason);
+        String warning = String.format(WARNING_MESSAGE_FORMAT, dataFilePath, reason);
+        return warning + formatBackupPath(exception);
+    }
+
+    private static String formatBackupPath(DataLoadingException exception) {
+        if (exception == null) {
+            return "";
+        }
+        Optional<Path> backupPath = exception.getBackupFilePath();
+        return backupPath.map(path -> "\nCorrupted data has been backed up to " + path).orElse("");
     }
 
     /**

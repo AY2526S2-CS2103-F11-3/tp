@@ -3,7 +3,10 @@ package seedu.address.storage;
 import static java.util.Objects.requireNonNull;
 
 import java.io.IOException;
+import java.nio.file.Files;
 import java.nio.file.Path;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Optional;
 import java.util.logging.Logger;
 
@@ -20,6 +23,8 @@ import seedu.address.model.ReadOnlyAddressBook;
 public class JsonAddressBookStorage implements AddressBookStorage {
 
     private static final Logger logger = LogsCenter.getLogger(JsonAddressBookStorage.class);
+    private static final DateTimeFormatter BACKUP_TIMESTAMP_FORMAT =
+            DateTimeFormatter.ofPattern("yyyyMMdd-HHmmss");
 
     private Path filePath;
 
@@ -55,7 +60,8 @@ public class JsonAddressBookStorage implements AddressBookStorage {
             return Optional.of(jsonAddressBook.get().toModelType());
         } catch (IllegalValueException ive) {
             logger.warning("Illegal values found in " + filePath + ": " + ive.getMessage());
-            throw new DataLoadingException(ive);
+            Path backupPath = backupCorruptedAddressBook(filePath);
+            throw new DataLoadingException(ive, backupPath);
         }
     }
 
@@ -75,6 +81,36 @@ public class JsonAddressBookStorage implements AddressBookStorage {
 
         FileUtil.createIfMissing(filePath);
         JsonUtil.saveJsonFile(new JsonSerializableAddressBook(addressBook), filePath);
+    }
+
+    private Path backupCorruptedAddressBook(Path filePath) {
+        if (filePath == null || !Files.exists(filePath)) {
+            return null;
+        }
+
+        Path backupPath = buildTimestampedBackupPath(filePath);
+        try {
+            Files.copy(filePath, backupPath);
+            logger.info("Corrupted address book backed up to " + backupPath);
+        } catch (IOException e) {
+            logger.warning("Failed to back up corrupted address book: " + e.getMessage());
+            return null;
+        }
+        return backupPath;
+    }
+
+    private Path buildTimestampedBackupPath(Path originalPath) {
+        String backupFileName = timestampedFileName(originalPath.getFileName().toString());
+        return originalPath.resolveSibling(backupFileName);
+    }
+
+    private String timestampedFileName(String fileName) {
+        String timestamp = LocalDateTime.now().format(BACKUP_TIMESTAMP_FORMAT);
+        String[] parts = fileName.split("\\.", 2);
+        if (parts.length == 2) {
+            return parts[0] + "-" + timestamp + "." + parts[1];
+        }
+        return fileName + "-" + timestamp;
     }
 
 }

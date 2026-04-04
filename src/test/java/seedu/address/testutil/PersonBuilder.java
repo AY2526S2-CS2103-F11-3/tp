@@ -27,7 +27,7 @@ public class PersonBuilder {
     public static final String DEFAULT_TRAINING_GOAL = "get a 6 pack";
     public static final String DEFAULT_TIMESLOT = "mon:1,2";
     public static final String DEFAULT_SKILL = Skill.SKILL_BEGINNER;
-    private static final String DEFAULT_INJURY_STATUS = "Unknown";
+    private static final String DEFAULT_INJURY_STATUS = "Healthy";
 
     private Name name;
     private Phone phone;

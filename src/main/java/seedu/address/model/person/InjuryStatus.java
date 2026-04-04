@@ -14,7 +14,7 @@ public class InjuryStatus {
 
     public static final String VALIDATION_REGEX = "(?!.*\\b[a-zA-Z]{1,2}/)[^\\s].*";
 
-    public static final String DEFAULT_INJURY_STATUS = "Unknown";
+    public static final String DEFAULT_INJURY_STATUS = "Healthy";
 
     public final String value;
 

@@ -126,6 +126,7 @@ Format: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS ts/TIMESLOT t/TRAINING_GOAL
 **Training Goal (`t/`):**
 * Represents the fitness or performance goal of the client (e.g. `run 50km`, `lift 100kg`)
 * Accepts any alphanumeric characters and spaces
+* Must not contain substrings that resemble command prefixes (e.g. `a/`, `p/`, `i/`, `t/`, `ts/`, `s/`, `pr/`)
 * Cannot be blank
 * This field is mandatory — every client must have a training goal specified
 
@@ -139,6 +140,7 @@ Format: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS ts/TIMESLOT t/TRAINING_GOAL
 **Injury Status (`i/`):**
 * Represents any injury or physical limitation of the client (e.g. `L4/L5 disc herniation`, `ACL tore`)
 * Accepts any alphanumeric characters and spaces
+* Must not contain substrings that resemble command prefixes (e.g. `a/`, `p/`, `i/`, `t/`, `ts/`, `s/`, `pr/`)
 * Cannot be blank if provided
 * This field is optional
 
@@ -216,6 +218,7 @@ Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [ts/TIMESLOT] [t/TR
 **Training Goal (`t/`):**
 * Represents the fitness or performance goal of the client (e.g. `run 50km`, `lift 100kg`)
 * Accepts any alphanumeric characters and spaces
+* Must not contain substrings that resemble command prefixes (e.g. `a/`, `p/`, `i/`, `t/`, `ts/`, `s/`, `pr/`)
 * Cannot be blank
 
 **Progress Record (`pr/`):**
@@ -227,6 +230,7 @@ Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [ts/TIMESLOT] [t/TR
 **Injury Status (`i/`):**
 * Represents any injury or physical limitation of the client (e.g. `L4/L5 disc herniation`, `ACL tore`)
 * Accepts any alphanumeric characters and spaces
+* Must not contain substrings that resemble command prefixes (e.g. `a/`, `p/`, `i/`, `t/`, `ts/`, `s/`, `pr/`)
 * Cannot be blank if provided
 
 **Skill Level (`s/`):**

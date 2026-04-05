@@ -540,6 +540,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 7.  Should only be closed using the “exit” command or window close button or by killing the process.
 8.  Command input should not exceed 500 words.
 9.  Should only be opened through the command line.
+10. The command history will only be saved per session and reset after the session ends.
 
 *{More to be added}*
 
@@ -572,6 +573,8 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
       - Minutes field must be '00' (e.g. 0800, 1400)
       - Each slot represents a single hour block, with 12 slots in total (i.e. Slot 1 - 0800-0900, Slot 12 - 1900-2000)
   - Each timeslot can be concatenated in this format: `day:start-end` OR `day:slotNumber`, where multiple slots in a day can be comma separated.
+
+* **Session**: Period between opening PTcoach and closing it
 
 *{More to be added}*
 

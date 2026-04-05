@@ -96,7 +96,7 @@ Format: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS ts/TIMESLOT t/TRAINING_GOAL
 **Phone Number (`p/`):**
 * Represents the contact number of the client (e.g. `98765432`)
 * Accepts numerals only — no spaces, dashes, or other characters
-* Must be at least 3 digits long
+* Must be between 3 and 15 digits long
 * This field is mandatory
 
 **Email (`e/`):**
@@ -126,18 +126,23 @@ Format: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS ts/TIMESLOT t/TRAINING_GOAL
 **Training Goal (`t/`):**
 * Represents the fitness or performance goal of the client (e.g. `run 50km`, `lift 100kg`)
 * Accepts any alphanumeric characters and spaces
+* Must not contain substrings that resemble command prefixes (e.g. `a/`, `p/`, `i/`, `t/`, `ts/`, `s/`, `pr/`)
 * Cannot be blank
+* The max length for the training goal is 200 characters
 * This field is mandatory — every client must have a training goal specified
 
 **Progress Record (`pr/`):**
 * Represents the client’s training progress as a percentage (e.g. `50%`, `100%`)
 * Accepts integers from `0 to 100`
 * Must be a whole number with % appended at the end (e.g. 0%, 50%)
+* Cannot be blank if provided
 * This field is optional
 
 **Injury Status (`i/`):**
 * Represents any injury or physical limitation of the client (e.g. `L4/L5 disc herniation`, `ACL tore`)
 * Accepts any alphanumeric characters and spaces
+* Must not contain substrings that resemble command prefixes (e.g. `a/`, `p/`, `i/`, `t/`, `ts/`, `s/`, `pr/`)
+* Must not exceed 300 characters
 * Cannot be blank if provided
 * This field is optional
 
@@ -150,7 +155,7 @@ Format: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS ts/TIMESLOT t/TRAINING_GOAL
 * This field is optional
 
 Examples:
-* `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01 t/Run 50km ts/mon:1,2 i/Shoulder dislocation pr/100%`
+* `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01 t/Run 50km ts/mon:1,2 i/Shoulder dislocation`
 * `add n/Betsy Crowe p/1234567 e/betsycrowe@example.com a/Newgate Prison t/Lift 100kg ts/mon:1,3;sat:2,4`
 
 ### Listing all persons : `list`
@@ -160,11 +165,11 @@ Shows a list of all persons in the address book, with an optional skill filter.
 Format: `list [s/SKILL]`
 
 **Skill Filter (`s/`):**
-* Filters the list to show only clients with a matching skill level (e.g. `beginner`, `intermediate`, `expert`)
-* Accepts any non-blank alphanumeric value — not restricted to predefined skill levels
-* Multiple skill filters can be provided to match clients with any of the specified skill levels
-* If no skill filter is provided, all persons are listed
-* Note: Typos in the skill filter (e.g. `list s/begniner`) will not result in an error, but will return an empty list since no clients match the misspelled value
+* Filters the list to show only clients with a matching skill level: `Beginner`, `Intermediate`, or `Expert`
+* Skill level is case-insensitive (e.g. `s/expert`, `s/EXPERT`, and `s/Expert` all work)
+* Multiple skill filters can be provided to match clients with any of the specified skill levels (e.g. `s/beginner s/expert`)
+* If no skill filter is provided, all clients are listed
+* Invalid skill levels (e.g. `list s/advanced`) will result in an error
 
 Examples:
 * `list` — lists all persons
@@ -189,7 +194,7 @@ Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [ts/TIMESLOT] [t/TR
 **Phone Number (`p/`):**
 * Represents the contact number of the client (e.g. `98765432`)
 * Accepts numerals only — no spaces, dashes, or other characters
-* Must be at least 3 digits long
+* Must be between 3 and 15 digits long
 
 **Email (`e/`):**
 * Represents the email address of the client (e.g. `johnd@example.com`)
@@ -215,7 +220,9 @@ Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [ts/TIMESLOT] [t/TR
 **Training Goal (`t/`):**
 * Represents the fitness or performance goal of the client (e.g. `run 50km`, `lift 100kg`)
 * Accepts any alphanumeric characters and spaces
+* Must not contain substrings that resemble command prefixes (e.g. `a/`, `p/`, `i/`, `t/`, `ts/`, `s/`, `pr/`)
 * Cannot be blank
+* The max length for the training goal is 200 characters
 
 **Progress Record (`pr/`):**
 * Represents the client’s training progress as a percentage (e.g. `50%`, `100%`)
@@ -226,6 +233,8 @@ Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [ts/TIMESLOT] [t/TR
 **Injury Status (`i/`):**
 * Represents any injury or physical limitation of the client (e.g. `L4/L5 disc herniation`, `ACL tore`)
 * Accepts any alphanumeric characters and spaces
+* Must not contain substrings that resemble command prefixes (e.g. `a/`, `p/`, `i/`, `t/`, `ts/`, `s/`, `pr/`)
+* Must not exceed 300 characters
 * Cannot be blank if provided
 
 **Skill Level (`s/`):**

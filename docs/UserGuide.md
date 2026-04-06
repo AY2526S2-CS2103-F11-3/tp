@@ -31,7 +31,7 @@ PTcoach is a **desktop app for managing client contacts, optimized for use via a
 
    * `list` : Lists all contacts.
 
-   * `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01 t/Run 100km ts/mon:1,3,5;tue:7 i/Healthy s/Beginner pr/50` : Adds a contact named `John Doe` to the Address Book.
+   * `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01 t/Run 100km ts/mon:1,3,5;tue:7 i/Healthy s/Beginner pr/50%` : Adds a contact named `John Doe` to the Address Book.
 
    * `delete 3` : Deletes the 3rd contact shown in the current list.
 
@@ -132,9 +132,9 @@ Format: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS ts/TIMESLOT t/TRAINING_GOAL
 * This field is mandatory — every client must have a training goal specified
 
 **Progress Record (`pr/`):**
-* Represents the client’s training progress as a percentage (e.g. `50`, `100`)
+* Represents the client’s training progress as a percentage (e.g. `50%`, `100%`)
 * Accepts integers from `0 to 100`
-* Must be a whole number (no symbols such as `%` or fractions)
+* Must be a whole number with % appended at the end (e.g. 0%, 50%)
 * Cannot be blank if provided
 * This field is optional
 
@@ -155,7 +155,7 @@ Format: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS ts/TIMESLOT t/TRAINING_GOAL
 * This field is optional
 
 Examples:
-* `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01 t/Run 50km ts/mon:1,2 i/Shoulder dislocation`
+* `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01 t/Run 50km ts/mon:1,2 i/Shoulder dislocation pr/100%`
 * `add n/Betsy Crowe p/1234567 e/betsycrowe@example.com a/Newgate Prison t/Lift 100kg ts/mon:1,3;sat:2,4`
 
 ### Listing all persons : `list`
@@ -198,6 +198,7 @@ Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [ts/TIMESLOT] [t/TR
 
 **Email (`e/`):**
 * Represents the email address of the client (e.g. `johnd@example.com`)
+* Must not exceed 200 characters
 * Must follow the format `local-part@domain` (e.g. `john@example.com`)
 * Both the local-part and domain cannot be blank
 
@@ -225,9 +226,9 @@ Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [ts/TIMESLOT] [t/TR
 * The max length for the training goal is 200 characters
 
 **Progress Record (`pr/`):**
-* Represents the client’s training progress as a percentage (e.g. `50`, `100`)
+* Represents the client’s training progress as a percentage (e.g. `50%`, `100%`)
 * Accepts integers from `0 to 100`
-* Must be a whole number (no symbols such as `%` or fractions)
+* Must be a whole number with `%` appended to the end
 * Cannot be blank if provided
 
 **Injury Status (`i/`):**
@@ -316,7 +317,8 @@ If the data file contains invalid entries, PTcoach will ignore those invalid ent
 ## FAQ
 
 **Q**: How do I transfer my data to another Computer?<br>
-**A**: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous PTcoach home folder.
+**A**: Copy `addressbook.json` into the folder you want to move to. (e.g `/path/to/PTcoach/data/addressbook.json`). PTcoach will automatically load the data.
+
 
 --------------------------------------------------------------------------------------------------------------------
 

@@ -263,8 +263,8 @@ Format: `find KEYWORD [MORE_KEYWORDS]`
 
 Examples:
 * `find John` returns `john` and `John Doe`
-* `find alex david` returns `Alex Yeoh`, `David Li`<br>
-  ![result for 'find alex david'](images/findAlexDavidResult.png)
+* `find sarah daniel` returns `Sarah Lim`, `Daniel Lee`<br>
+  ![result for 'find sarah daniel'](images/findSarahDaniel.png)
 
 ### Deleting a person : `delete`
 

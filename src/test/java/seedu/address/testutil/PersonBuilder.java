@@ -28,6 +28,7 @@ public class PersonBuilder {
     public static final String DEFAULT_TIMESLOT = "mon:1,2";
     public static final String DEFAULT_SKILL = Skill.SKILL_BEGINNER;
     private static final String DEFAULT_INJURY_STATUS = "Unknown";
+    private static final String DEFAULT_PROGRESS_RECORD = "0%";
 
     private Name name;
     private Phone phone;
@@ -50,7 +51,7 @@ public class PersonBuilder {
         injuryStatus = new InjuryStatus(DEFAULT_INJURY_STATUS);
         trainingGoal = new TrainingGoal(DEFAULT_TRAINING_GOAL);
         skill = new Skill(DEFAULT_SKILL);
-        progressRecord = new ProgressRecord(ProgressRecord.DEFAULT_PROGRESS);
+        progressRecord = new ProgressRecord(DEFAULT_PROGRESS_RECORD);
         timeslots = new TreeSet<>();
         timeslots.add(new Timeslot(DEFAULT_TIMESLOT));
     }

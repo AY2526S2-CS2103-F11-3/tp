@@ -51,6 +51,7 @@
         "storage-component": "Storage component",
         "common-classes": "Common classes",
         "implementation": "Implementation",
+        "command-history-navigation": "Command History Navigation",
         "filter-by-skill-feature": "Filter by Skill Feature",
         "documentation-logging-testing-configuration-dev-ops": "Documentation, logging, testing, configuration, dev-ops",
         "appendix-requirements": "Appendix: Requirements",
@@ -67,7 +68,7 @@
         "deleting-a-person": "Deleting a person",
         "clearing-all-persons": "Clearing all persons",
         "help-command": "Help command",
-        "command-history-navigation": "Command history navigation",
+        "command-history-navigation-2": "Command history navigation",
         "saving-data": "Saving data"
       },
       "headingKeywords": {}

@@ -389,9 +389,9 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 **Extensions**
 * 1a. The given details are invalid.
   * 1a1. PTcoach shows an error message.
-    
+
     Use case ends.
-  
+
 * 1b. The given client exists.
   * 1b1. PTcoach shows an error message.
 
@@ -399,7 +399,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 * 1c. The given command has an incorrect format.
   * 1c1. PTcoach shows an error message.
-  
+
     Use case ends.
 
 **Use case: UC2 - Find a specific client**

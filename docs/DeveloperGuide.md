@@ -541,6 +541,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 8.  Command input should not exceed 500 words.
 9.  Should only be opened through the command line.
 10. The command history will only be saved per session and reset after the session ends.
+11. Should terminate command validation upon the first error encountered and display only the error message associated with that specific parameter.
 
 *{More to be added}*
 

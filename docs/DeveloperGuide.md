@@ -648,7 +648,7 @@ testers are expected to do more *exploratory* testing.
 5. Adding a person with missing compulsory fields
 
    1. Test case: `add n/John Doe p/98765432 e/johnd@example.com a/John street t/Run 50km`<br>
-          Expected: No person is added. An error message is shown because the timeslot is missing.
+      Expected: No person is added. An error message is shown because the timeslot is missing.
 
    2. Test case: `add n/John Doe p/98765432 e/johnd@example.com a/John street ts/mon:1,2`<br>
       Expected: No person is added. An error message is shown because the training goal is missing.
@@ -659,6 +659,8 @@ testers are expected to do more *exploratory* testing.
 
    1. Test case: `list`<br>
       Expected: All persons in the address book are shown.
+
+&nbsp;
 
 2. Listing persons by skill filter 
 
@@ -678,10 +680,14 @@ testers are expected to do more *exploratory* testing.
    1. Test case: `list s/beginner` when there are no beginner clients<br>
       Expected: An empty list is shown.
 
+&nbsp;
+
 4. Listing persons with an invalid filter
 
    1. Test case: `list s/advanced`<br>
       Expected: The command does not execute and an error message is shown because the skill is invalid.
+
+&nbsp;
 
 5. Listing persons with missing filter parameter
 
@@ -701,6 +707,8 @@ testers are expected to do more *exploratory* testing.
 
    1. Test case: `edit 1 e/johndoe@example.com t/Lift 100kg ts/fri:2,3 pr/70 s/intermediate`<br>
       Expected: The specified fields of the 1st person are updated. A success message is shown.
+
+&nbsp;
 
 3. Editing a person with invalid index
    
@@ -767,6 +775,8 @@ testers are expected to do more *exploratory* testing.
 
     1. Test case: `help`<br>
        Expected: The help message appears.
+
+&nbsp;
 
 2. Help with extra parameters
 

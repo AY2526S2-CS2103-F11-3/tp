@@ -23,6 +23,7 @@ PTcoach is a **desktop app for managing client contacts, optimized for use via a
 3. Copy the file to the folder you want to use as the _home folder_ for your PTcoach.
 
 4. Open a command terminal, `cd` into the folder you put the jar file in, and use the `java -jar PTcoach.jar` command to run the application.<br>
+   
    A GUI similar to the below should appear in a few seconds. Note how the app contains some sample data.<br>
    ![Ui](images/Ui.png)
 
@@ -299,12 +300,12 @@ The live data reside in `[JAR file location]/data/addressbook.json`.
 Advanced users are welcome to update data directly by editing `[JAR file location]/data/addressbook.json`.
 
 <box type="warning" seamless>
-**Caution:**
-If the data file contains invalid entries, PTcoach will ignore those invalid entries during startup and continue loading the valid ones.
 
+**Caution:** If the data file contains invalid entries, PTcoach will ignore those invalid entries during startup and continue loading the valid ones.
 - PTcoach will try to save the invalid entries to a separate file for reference. Hence, it is still recommended to make a backup of the data file before editing it manually.<br>
 - Edits that do not follow the required format or valid value range may cause PTcoach to behave in unexpected ways. Edit the data file only if you are confident that you can update it correctly.<br>
 - If you edit the data file while PTcoach is **running**, your changes will not appear in the app immediately and may not be preserved, because the app can overwrite the file when it saves data. Always close PTcoach before editing the data file manually.
+
 </box>
 
 ### Command History Navigation

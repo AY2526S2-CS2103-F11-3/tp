@@ -55,10 +55,6 @@ Person *--> "1" TrainingGoal
 Person *--> "1" InjuryStatus
 Person *--> "1" ProgressRecord
 
-Class A
-Class "<<enumeration>>\nB" as B
-A --> "1..12" B
-
 Person -[hidden]up--> I
 UniquePersonList -[hidden]right-> I
 

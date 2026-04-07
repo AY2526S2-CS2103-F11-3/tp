@@ -322,6 +322,9 @@ If the data file contains invalid entries, PTcoach will ignore those invalid ent
 **Q**: How do I transfer my data to another Computer?<br>
 **A**: Copy `addressbook.json` into the folder you want to move to. (e.g `/path/to/PTcoach/data/addressbook.json`). PTcoach will automatically load the data.
 
+**Q**: I believe I have multiple wrong parameters, but only 1 helper text shows up, where is the rest?<br>
+**A**: In the event of an error within the command, PTcoach will only show the first error encountered. Other errors within the command will be ignored. 
+
 
 --------------------------------------------------------------------------------------------------------------------
 

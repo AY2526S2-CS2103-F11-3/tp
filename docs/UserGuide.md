@@ -324,7 +324,7 @@ Advanced users are welcome to update data directly by editing `[JAR file locatio
 
 ### Command History Navigation
 
-PTCoach supports command history navigation similar to Unix command-line systems.
+PTcoach supports command history navigation similar to Unix command-line systems.
 
 * Press the **Up** arrow key to view previously entered commands.
 * Press the **Down** arrow key to move towards more recent commands.

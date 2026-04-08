@@ -10,6 +10,7 @@
 <page-nav-print />
 
 --------------------------------------------------------------------------------------------------------------------
+<div style="page-break-after: always;"></div>
 
 ## **Acknowledgements**
 
@@ -35,6 +36,7 @@ Refer to the guide [_Setting up and getting started_](SettingUp.md).
 The ***Architecture Diagram*** given above explains the high-level design of the App.
 
 Given below is a quick overview of main components and how they interact with each other.
+<div style="page-break-after: always;"></div>
 
 **Main components of the architecture**
 
@@ -61,11 +63,13 @@ Each of the four main components (also shown in the diagram above),
 
 * defines its *API* in an `interface` with the same name as the Component.
 * implements its functionality using a concrete `{Component Name}Manager` class (which follows the corresponding API `interface` mentioned in the previous point.
+<div style="page-break-after: always;"></div>
 
 For example, the `Logic` component defines its API in the `Logic.java` interface and implements its functionality using the `LogicManager.java` class which follows the `Logic` interface. Other components interact with a given component through its interface rather than the concrete class (reason: to prevent outside component's being coupled to the implementation of a component), as illustrated in the (partial) class diagram below.
 
 <puml src="diagrams/ComponentManagers.puml" width="300" />
 
+<div style="page-break-after: always;"></div>
 The sections below give more details of each component.
 
 ### UI component
@@ -85,6 +89,7 @@ The `UI` component,
 * listens for changes to `Model` data so that the UI can be updated with the modified data.
 * keeps a reference to the `Logic` component, because the `UI` relies on the `Logic` to execute commands.
 * depends on some classes in the `Model` component, as it displays `Person` object residing in the `Model`.
+<div style="page-break-after: always;"></div>
 
 ### Logic component
 
@@ -93,8 +98,9 @@ The `UI` component,
 Here's a (partial) class diagram of the `Logic` component:
 
 <puml src="diagrams/LogicClassDiagram.puml" width="550"/>
+<div style="page-break-after: always;"></div>
 
-The sequence diagram below illustrates the interactions within the `Logic` component, taking `execute("delete 1")` API call as an example.
+The sequence diagram below illustrates the interactions within the `Logic` component, taking<br> `execute("delete 1")` API call as an example.
 
 <puml src="diagrams/DeleteSequenceDiagram.puml" alt="Interactions Inside the Logic Component for the `delete 1` Command" />
 
@@ -110,6 +116,7 @@ How the `Logic` component works:
 1. The command can communicate with the `Model` when it is executed (e.g. to delete a person).<br>
    Note that although this is shown as a single step in the diagram above (for simplicity), in the code it can take several interactions (between the command object and the `Model`) to achieve.
 1. The result of the command execution is encapsulated as a `CommandResult` object which is returned back from `Logic`.
+<div style="page-break-after: always;"></div>
 
 Here are the other classes in `Logic` (omitted from the class diagram above) that are used for parsing a user command:
 
@@ -118,6 +125,7 @@ Here are the other classes in `Logic` (omitted from the class diagram above) tha
 How the parsing works:
 * When called upon to parse a user command, the `AddressBookParser` class creates an `XYZCommandParser` (`XYZ` is a placeholder for the specific command name e.g., `AddCommandParser`) which uses the other classes shown above to parse the user command and create a `XYZCommand` object (e.g., `AddCommand`) which the `AddressBookParser` returns back as a `Command` object.
 * All `XYZCommandParser` classes (e.g., `AddCommandParser`, `DeleteCommandParser`, ...) inherit from the `Parser` interface so that they can be treated similarly where possible e.g, during testing.
+<div style="page-break-after: always;"></div>
 
 ### Model component
 **API** : [`Model.java`](https://github.com/AY2526S2-CS2103-F11-3/tp/blob/master/src/main/java/seedu/address/model/Model.java)
@@ -157,6 +165,7 @@ The `Storage` component,
 Classes used by multiple components are in the `seedu.address.commons` package.
 
 --------------------------------------------------------------------------------------------------------------------
+<div style="page-break-after: always;"></div>
 
 ## **Implementation**
 
@@ -182,6 +191,7 @@ Step 1. The user launches the application. For the purpose of this example, assu
 
 Step 2. The user enters 3 commands in order: `help`, `list`, `list s/advancd`,
 <puml src="diagrams/CommandHistoryState1.puml" alt="CommandHistoryState1" />
+<div style="page-break-after: always;"></div>
 
 Step 3. The user presses `Up` key, to retrieve back the past submitted command (`list s/advancd`).
 
@@ -191,6 +201,7 @@ Step 4. The user resubmits a new command (`list s/advanced`).
 
 <puml src="diagrams/CommandHistoryState3.puml" alt="CommandHistoryState3" />
 
+<div style="page-break-after: always;"></div>
 
 The following sequence diagram shows the relation between `CommandHistory` and `CommandBox`
 
@@ -207,6 +218,7 @@ Similarly, navigate down works the opposite of navigate up, going forwards in th
 Step 5. The user wants to find the list command, but overshoots it by an extra key press, leading it to `help`.
 
 <puml src="diagrams/CommandHistoryState4.puml" alt="CommandHistoryState4" />
+<div style="page-break-after: always;"></div>
 
 Step 6. The user presses `Down` key once, and `list` is shown in the Command text field.
 
@@ -214,12 +226,14 @@ Step 6. The user presses `Down` key once, and `list` is shown in the Command tex
 
 Step 7. After executing the command, `list` is appended to the command history and current is updated to the size of `Command History`
 <puml src="diagrams/CommandHistoryState6.puml" alt="CommandHistoryState6" />
+<div style="page-break-after: always;"></div>
 
 The following activity diagram summarizes what happens when users want to navigate the command history of their current session.
 
 <puml src="diagrams/CommandHistoryActivityDiagram.puml" alt="CommandHistoryActivityDiagram" />
 
 
+<div style="page-break-after: always;"></div>
 
 ### Filter by Skill Feature
 #### Implementation
@@ -246,6 +260,7 @@ full list of attributes and relationships in each class, refer to the informatio
 </box>
 
 <puml src="diagrams/FilterSkillState0.puml" alt="FilterSkillState0" />
+<div style="page-break-after: always;"></div>
 
 Step 2. The user executes `list s/expert`. `ListCommandParser` parses the input and returns a `ListCommand` containing `Expert` as the skill filter. `ListCommand#execute()` calls `Model#updateFilteredPersonList()` with a predicate that matches only persons with the `Expert` skill level. Only `Charlie` is shown, and the result message reflects 1 entry found.
 
@@ -264,6 +279,7 @@ message reflects 2 entries found.
 produce the same result.
 
 </box>
+<div style="page-break-after: always;"></div>
 
 Step 4. The user executes `list` with no `s/` prefix. `ListCommandParser` returns an unfiltered
 `ListCommand`. `ListCommand#execute()` calls `Model#updateFilteredPersonList()` with
@@ -280,6 +296,7 @@ Step 4. The user executes `list` with no `s/` prefix. `ListCommandParser` return
 
 Step 5. The user executes `list s/advanced`. Since `advanced` is not a valid skill level,
 `ListCommandParser` throws a `ParseException` and the filtered list is not updated.
+<div style="page-break-after: always;"></div>
 
 The following sequence diagram shows how a `list s/expert` operation goes through the `Logic`
 component:
@@ -296,6 +313,7 @@ limitation of PlantUML, the lifeline reaches the end of diagram.
 Similarly, how the operation goes through the `Model` component is shown below:
 
 <puml src="diagrams/FilterSkillSequenceDiagram-Model.puml" alt="FilterSkillSequenceDiagram-Model" />
+<div style="page-break-after: always;"></div>
 
 The following activity diagram summarizes what happens when a user executes a `list` command:
 
@@ -312,6 +330,7 @@ The following activity diagram summarizes what happens when a user executes a `l
 * **Alternative 2:** Extract the predicate into a dedicated `SkillContainsKeywordsPredicate` class.
     * Pros: Improves testability and separates concerns more cleanly.
     * Cons: Adds an extra class for relatively simple logic.
+<div style="page-break-after: always;"></div>
 
 **Aspect: How multiple skill filters are combined:**
 
@@ -349,6 +368,8 @@ _{more aspects and alternatives to be added}_
 * Manages clients and their injuries efficiently.
 
 **Value proposition**: Provides a centralized system for personal trainers to efficiently manage client contact details, track injury histories, and monitor training goals and skill progress, optimized for users who prefer a fast, keyboard-driven interface.
+<div style="page-break-after: always;"></div>
+
 ### User stories
 
 Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
@@ -404,6 +425,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
   * 1c1. PTcoach shows an error message.
 
     Use case ends.
+<div style="page-break-after: always;"></div>
 
 **Use case: UC2 - Find a specific client**
 
@@ -487,6 +509,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
   * 1c1. PTcoach shows an error message.
    
     Use case ends.
+<div style="page-break-after: always;"></div>
 
 **Use case: UC5 - Launch the app via command line**
 
@@ -560,6 +583,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
   * 1c1. PTcoach shows an error message.
      
     Use case ends.
+<div style="page-break-after: always;"></div>
 
 **Use case: UC8 - Navigate command history**
 
@@ -604,6 +628,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 10. The command history will only be saved per session and reset after the session ends.
 
 *{More to be added}*
+<div style="page-break-after: always;"></div>
 
 ### Glossary
 
@@ -640,6 +665,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 *{More to be added}*
 
 --------------------------------------------------------------------------------------------------------------------
+<div style="page-break-after: always;"></div>
 
 ## **Appendix: Instructions for manual testing**
 
@@ -749,6 +775,7 @@ testers are expected to do more *exploratory* testing.
       Expected: The command does not execute and an error message is shown because the skill is invalid.
 
 &nbsp;
+<div style="page-break-after: always;"></div>
 
 5. Listing persons with missing filter parameter
 
@@ -798,6 +825,7 @@ testers are expected to do more *exploratory* testing.
     1. Test case: `edit 1`<br>
        Expected: No person is edited. An error message is shown.
 
+<div style="page-break-after: always;"></div>
 
 ### Deleting a person
 
@@ -843,6 +871,7 @@ testers are expected to do more *exploratory* testing.
 
     1. Test case: `help abc`<br>
        Expected: The help message appears.
+<div style="page-break-after: always;"></div>
 
 ### Command history navigation
 
@@ -887,6 +916,7 @@ testers are expected to do more *exploratory* testing.
 
    3. Press the Down arrow key again.<br>
       Expected: The command box becomes empty.
+<div style="page-break-after: always;"></div>
 
 ### Saving data
 

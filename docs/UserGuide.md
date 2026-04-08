@@ -10,8 +10,8 @@ PTcoach is a **desktop app for managing client contacts, optimized for use via a
 
 <!-- * Table of Contents -->
 <page-nav-print />
-
 --------------------------------------------------------------------------------------------------------------------
+<div style="page-break-after: always;"></div>
 
 ## Quick start
 
@@ -39,6 +39,7 @@ PTcoach is a **desktop app for managing client contacts, optimized for use via a
    * `clear` : Deletes all contacts.
 
    * `exit` : Exits the app.
+<div style="page-break-after: always;"></div>
 
 6. Refer to the [Features](#features) below for details of each command.
 
@@ -75,6 +76,7 @@ Shows a message explaining how to access the help page.
 
 Format: `help`
 
+<div style="page-break-after: always;"></div>
 
 ### Adding a person: `add`
 
@@ -157,6 +159,7 @@ Format: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS ts/TIMESLOT t/TRAINING_GOAL
 Examples:
 * `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01 t/Run 50km ts/mon:1,2 i/Shoulder dislocation pr/100%`
 * `add n/Betsy Crowe p/1234567 e/betsycrowe@example.com a/Newgate Prison t/Lift 100kg ts/mon:1,3;sat:2,4`
+<div style="page-break-after: always;"></div>
 
 ### Listing all persons : `list`
 
@@ -243,6 +246,7 @@ Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [ts/TIMESLOT] [t/TR
 * Must be a whole number with `%` appended to the end
 * Cannot be blank if provided
 * This field is optional
+<div style="page-break-after: always;"></div>
 
 **Injury Status (`i/`):**
 * Represents any injury or physical limitation of the client (e.g. `L4/L5 disc herniation`, `ACL tore`)
@@ -331,6 +335,7 @@ PTcoach supports command history navigation similar to Unix command-line systems
 * This allows users to quickly reuse or edit past commands without retyping them.
 
 --------------------------------------------------------------------------------------------------------------------
+<div style="page-break-after: always;"></div>
 
 ## FAQ
 
@@ -354,6 +359,7 @@ PTcoach supports command history navigation similar to Unix command-line systems
 2. **If you minimize the Help Window** and then run the `help` command again, the original Help Window will remain minimized, and no new Help Window will appear. The remedy is to manually restore the minimized Help Window.
 
 --------------------------------------------------------------------------------------------------------------------
+<div style="page-break-after: always;"></div>
 
 ## Command summary
 

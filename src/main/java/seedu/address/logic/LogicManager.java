@@ -66,6 +66,11 @@ public class LogicManager implements Logic {
         return commandResult;
     }
 
+    /**
+     * Returns true if executing the given {@code command} should persist the address book to storage.
+     * Read-only commands such as {@code list}, {@code find}, and {@code help} do not modify the address
+     * book and therefore do not need to be saved.
+     */
     private boolean shouldSave(Command command) {
         return !(command instanceof ListCommand
                 || command instanceof FindCommand

@@ -508,7 +508,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 **MSS**
 
 1. Trainer requests to view clients.
-2. PTcoach shows a list of clients.
+2. PTcoach shows a list of all clients.
 
    Use case ends.
 
@@ -536,19 +536,19 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 **Extensions**
 
 * 1a. Missing filter parameter.
-    * 1a1. PTcoach shows a message indicating that the parameter is empty.
+  * 1a1. PTcoach shows a message indicating that the parameter is empty.
 
-      Use case ends.
+  Use case ends.
 
 * 1b. Invalid filter parameter.
-    * 1b1. PTcoach shows an error message.
+  * 1b1. PTcoach shows an error message.
 
-      Use case ends.
+    Use case ends.
 
 * 2a. No clients match the filter. 
-    * 2a1. PTcoach shows an empty list. 
+  * 2a1. PTcoach shows an empty list. 
   
-      Use case ends.
+    Use case ends.
 
 **Use case: UC8 - Read client details**
 

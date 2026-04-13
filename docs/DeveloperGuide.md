@@ -913,7 +913,7 @@ testers are expected to do more *exploratory* testing.
 
 --------------------------------------------------------------------------------------------------------------------
 
-## **Appendix: Planned Enhancement(s)**
+## **Appendix: Planned Enhancement**
 
 1. **Preserve filtered list after edit command**:
    Currently, executing the ```edit``` command resets the displayed list to all persons, even when the user is working with a filtered list. This may cause subsequent index-based commands to act on unintended persons. We plan to preserve the filtered list after editing so that users can continue operating on the same set of results to make viewing the changes easier.

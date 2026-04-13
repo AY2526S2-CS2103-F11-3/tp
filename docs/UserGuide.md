@@ -10,7 +10,9 @@ PTcoach is a **desktop app for managing client contacts, optimized for use via a
 
 <!-- * Table of Contents -->
 <page-nav-print />
+
 --------------------------------------------------------------------------------------------------------------------
+
 <div style="page-break-after: always;"></div>
 
 ## Quick start
@@ -23,7 +25,6 @@ PTcoach is a **desktop app for managing client contacts, optimized for use via a
 3. Copy the file to the folder you want to use as the _home folder_ for your PTcoach.
 
 4. Open a command terminal, `cd` into the folder you put the jar file in, and use the `java -jar PTcoach.jar` command to run the application.<br>
-
    A GUI similar to the below should appear in a few seconds. Note how the app contains some sample data.<br>
    ![Ui](images/Ui.png)
 
@@ -39,13 +40,11 @@ PTcoach is a **desktop app for managing client contacts, optimized for use via a
     * `clear` : Deletes all contacts.
 
    * `exit` : Exits the app.
-<div style="page-break-after: always;"></div>
 
 6. Refer to the [Features](#features) below for details of each command.
 
 **Note:** To start using PTcoach use the `clear` command to delete all contacts
 
---------------------------------------------------------------------------------------------------------------------
 
 ## Features
 
@@ -82,7 +81,6 @@ Shows a message explaining how to access the help page.
 ![help message](images/helpMessage.png)
 
 Format: `help`
-
 <div style="page-break-after: always;"></div>
 
 ### Adding a person: `add`
@@ -94,7 +92,6 @@ Format: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS ts/TIMESLOT t/TRAINING_GOAL
 Examples:
 * `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01 t/Run 50km ts/mon:1,2 i/Shoulder dislocation pr/100%`
 * `add n/Betsy Crowe p/1234567 e/betsycrowe@example.com a/Newgate Prison t/Lift 100kg ts/mon:1,3;sat:2,4`
-<div style="page-break-after: always;"></div>
 
 ### Listing all persons : `list`
 
@@ -121,6 +118,7 @@ Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [ts/TIMESLOT] [t/TR
 Examples:
 *  `edit 1 p/91234567 e/johndoe@example.com` Edits the phone number and email address of the 1st person to be `91234567` and `johndoe@example.com` respectively.
 *  `edit 2 n/Betsy Crower` Edits the name of the 2nd person to be `Betsy Crower`.
+<div style="page-break-after: always;"></div>
 
 ### Locating persons by name: `find`
 
@@ -172,6 +170,7 @@ Format: `exit`
 PTcoach saves to disk automatically every time a command runs. There is no need to save manually.
 
 The live data reside in `[JAR file location]/data/addressbook.json`.
+<div style="page-break-after: always;"></div>
 
 ### Editing the data file
 
@@ -204,6 +203,8 @@ PTcoach supports command history navigation similar to Unix command-line systems
 
 --------------------------------------------------------------------------------------------------------------------
 
+<div style="page-break-after: always;"></div>
+
 ## Flag Constraints
 
 **Name (`n/`):**
@@ -235,6 +236,7 @@ PTcoach supports command history navigation similar to Unix command-line systems
 * Cannot be blank
 * This field is mandatory
 
+
 **Timeslot (`ts/`):**
 * Represents the weekly training schedule of the client (e.g. `mon:1,3,5;tue:7`)
 * Must follow the format: 'day:slot[,slot...];day:slot'
@@ -247,6 +249,8 @@ PTcoach supports command history navigation similar to Unix command-line systems
   * 24-hour format `HHMM-HHMM`, where times must start and end exactly on the hour (i.e. the minutes (MM) field must be `00`)
       * e.g. `0800-0900` or `1900-2000`
       * only valid 1-hour ranges are allowed
+<div style="page-break-after: always;"></div>
+
 * No duplicate slots allowed for the same day
 * No duplicate days allowed in the same command
     * e.g. `mon:1;mon:2` should be `mon:1,2` instead

@@ -935,4 +935,4 @@ testers are expected to do more *exploratory* testing.
    1. Prerequisites: The data file `[JAR file location]/data/addressbook.json` contains invalid JSON.
 
    2. Launch the application.<br>
-      Expected: The application display an error message.
+      Expected: The application loads an empty list.

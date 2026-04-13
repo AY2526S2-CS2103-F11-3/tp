@@ -368,7 +368,6 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | `* * *` | trainer    | set an initial training level (e.g., Beginner) | know where to start a new client's training workout      |
 | `* * *` | trainer    | filter the list by training level              | plan group sessions for similar abilities                     |
 | `*`  | impatient user | get search results in under 200ms              | not feel held up while on the gym floor                       |
-| `* * *` | trainer    | undo the last command executed                 | quickly fix accidental deletions or edits                     |
 | `*`  | trainer    | list all clients who have no recorded injuries | identify clients who can handle high-intensity workouts  |
 | `*`  | expert user | use short aliases (e.g., `a` for add)          | enter data faster during back-to-back sessions                |
 | `*`  | trainer    | edit an existing progress note                 | correct typos or add more detail later                        |
@@ -636,12 +635,6 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 * **Default Injury Status**: The default injury status for a client is set to `Healthy`
 
 * **Default Progress Record**: The default progress record for a client is set to `0%`
-
-
-### Requirements yet to be implemented
-
-1. Undo command:
-   As a coach, I want to undo the last command executed to quickly fix accidental deletions or edits.
 
 --------------------------------------------------------------------------------------------------------------------
 

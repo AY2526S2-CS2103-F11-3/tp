@@ -81,7 +81,7 @@ The `UI` component uses the JavaFx UI framework. The layout of these UI parts ar
 The `UI` component,
 
 * executes user commands using the `Logic` component.
-* holds a list of past commands executed using the `CommmandHistory` component within CommandBox. (e.g 1:`add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01 t/Run 50km ts/mon:1,2 i/Shoulder dislocation`, 2:`list`.
+* holds a list of past commands executed using the `CommandHistory` component within CommandBox. (e.g 1:`add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01 t/Run 50km ts/mon:1,2 i/Shoulder dislocation`, 2:`list`.
 * listens for changes to `Model` data so that the UI can be updated with the modified data.
 * keeps a reference to the `Logic` component, because the `UI` relies on the `Logic` to execute commands.
 * depends on some classes in the `Model` component, as it displays `Person` object residing in the `Model`.
@@ -180,14 +180,14 @@ Step 1. The user launches the application. For the purpose of this example, assu
 
 <puml src="diagrams/CommandHistoryState0.puml" alt="CommandHistoryState0" />
 
-Step 2. The user enters 3 commands in order: `help`, `list`, `list s/advancd`,
+Step 2. The user enters 3 commands in order: `help`, `list`, `list s/beginnerr`,
 <puml src="diagrams/CommandHistoryState1.puml" alt="CommandHistoryState1" />
 
-Step 3. The user presses `Up` key, to retrieve back the past submitted command (`list s/advancd`).
+Step 3. The user realises he made a typo, and presses `Up` key to retrieve back the past submitted command (`list s/beginnerr`).
 
 <puml src="diagrams/CommandHistoryState2.puml" alt="CommandHistoryState2" />
 
-Step 4. The user resubmits a new command (`list s/advanced`).
+Step 4. The user resubmits a new command (`list s/beginner`).
 
 <puml src="diagrams/CommandHistoryState3.puml" alt="CommandHistoryState3" />
 
@@ -212,7 +212,7 @@ Step 6. The user presses `Down` key once, and `list` is shown in the Command tex
 
 <puml src="diagrams/CommandHistoryState5.puml" alt="CommandHistoryState5" />
 
-Step 7. After executing the command, `list` is appended to the command history and current is updated to the size of `Command History`
+Step 7. After executing the command, `list` is appended to the command history and current is updated to the size of `commandHistory`
 <puml src="diagrams/CommandHistoryState6.puml" alt="CommandHistoryState6" />
 
 The following activity diagram summarizes what happens when users want to navigate the command history of their current session.
@@ -460,6 +460,11 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
     Use case ends.
 
+* 1e. Value(s) for the field(s) to be edited is the same as the original values for the same field(s).
+    * 1e1. PTcoach shows an error message.
+
+      Use case ends.
+
 **Use case: UC4 - Delete a client**
 
 **MSS**
@@ -506,9 +511,8 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **MSS**
 
-1. Trainer requests to view clients (optionally filtered by skill).
+1. Trainer requests to view clients.
 2. PTcoach shows a list of all clients.
-3. PTcoach shows a list of clients matching the request.
 
    Use case ends.
 
@@ -524,17 +528,38 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
    
     Use case ends.
 
-* 3a. No clients match the filter. 
-  * 3a1. PTcoach shows an empty list.
-  
+**Use case: UC7 - Filter clients by skill level**
+
+**MSS**
+
+1. Trainer requests to view clients filtered by skill level.
+2. PTcoach shows a list of clients filtered by skill level.
+
+   Use case ends.
+
+**Extensions**
+
+* 1a. Missing filter parameter.
+  * 1a1. PTcoach shows a message indicating that the parameter is empty.
+
+  Use case ends.
+
+* 1b. Invalid filter parameter.
+  * 1b1. PTcoach shows an error message.
+
     Use case ends.
-  
-* 3b. Missing filter parameter
-  * 3b1. PTcoach shows a message indicating that the parameter is empty.
+
+* 1c. Duplicate filter parameters.
+  * 1c1. PTcoach shows a list of clients filtered by skill level.
+
+    Use case ends.
+
+* 2a. No clients match the filter. 
+  * 2a1. PTcoach shows an empty list. 
   
     Use case ends.
 
-**Use case: UC7 - Read client details**
+**Use case: UC8 - Read client details**
 
 **MSS**
 
@@ -560,7 +585,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
     Use case ends.
 
-**Use case: UC8 - Navigate command history**
+**Use case: UC9 - Navigate command history**
 
 **MSS**
 
@@ -636,6 +661,8 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 * **Default Progress Record**: The default progress record for a client is set to `0%`
 
+* **Flag-like prefixes**: Matches strings that start with one or two alphabetic characters (A–Z, case-insensitive), followed by a forward slash `/` (i.e. `x/`, `xx/`,)
+
 --------------------------------------------------------------------------------------------------------------------
 
 ## **Appendix: Instructions for manual testing**
@@ -682,7 +709,7 @@ testers are expected to do more *exploratory* testing.
 
 2. Adding a person with all fields
 
-   1. Test case: `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01 t/Run 50km ts/mon:1,2 i/Shoulder dislocation s/beginner pr/50`<br>
+   1. Test case: `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01 t/Run 50km ts/mon:1,2 i/Shoulder dislocation s/beginner pr/50%`<br>
       Expected: A new person is added to the list with all provided details. A success message is shown.
 
 3. Adding a duplicate person
@@ -763,7 +790,7 @@ testers are expected to do more *exploratory* testing.
 
 2. Editing a person with multiple fields
 
-   1. Test case: `edit 1 e/johndoe@example.com t/Lift 100kg ts/fri:2,3 pr/70 s/intermediate`<br>
+   1. Test case: `edit 1 e/johndoe@example.com t/Lift 100kg ts/fri:2,3 pr/70% s/intermediate`<br>
       Expected: The specified fields of the 1st person are updated. A success message is shown.
 
 &nbsp;
@@ -803,10 +830,10 @@ testers are expected to do more *exploratory* testing.
    1. Prerequisites: List all persons using the `list` command. Multiple persons in the list.
 
    2. Test case: `delete 1`<br>
-      Expected: First contact is deleted from the list. Details of the deleted contact shown in the status message. Timestamp in the status bar is updated.
+      Expected: First contact is deleted from the list. Details of the deleted contact shown in the status message.
 
    3. Test case: `delete 0`<br>
-      Expected: No person is deleted. Error details shown in the status message. Status bar remains the same.
+      Expected: No person is deleted. Error details shown in the status message.
 
    4. Other incorrect delete commands to try: `delete`, `delete x`, `...` (where x is larger than the list size)<br>
       Expected: Similar to previous.

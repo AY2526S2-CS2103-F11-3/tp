@@ -13,6 +13,8 @@ PTcoach is a **desktop app for managing client contacts, optimized for use via a
 
 --------------------------------------------------------------------------------------------------------------------
 
+<div style="page-break-after: always;"></div>
+
 ## Quick start
 
 1. Ensure you have Java `17` or above installed in your computer.<br>
@@ -42,13 +44,12 @@ PTcoach is a **desktop app for managing client contacts, optimized for use via a
 
     * `clear` : Deletes all contacts.
 
-    * `exit` : Exits the app.
+   * `exit` : Exits the app.
 
 6. Refer to the [Features](#features) below for details of each command.
 
 **Note:** To start using PTcoach use the `clear` command to delete all contacts
 
---------------------------------------------------------------------------------------------------------------------
 
 ## Features
 
@@ -76,6 +77,7 @@ This page is the shared reference for how PTcoach commands are written and inter
 
 * PTcoach does **not** allow duplicate persons.
 * A person is considered a duplicate if they have the same phone number.
+<div style="page-break-after: always;"></div>
 
 ### 3. Viewing and finding persons
 
@@ -110,6 +112,7 @@ Format: `find KEYWORD [MORE_KEYWORDS]`
 * Partial words will be matched e.g. `Han` will match `Hans`
 * Persons matching at least one keyword will be returned (i.e. `OR` search).
   e.g. `Hans Bo` will return `Hans Gruber`, `Bo Yang`
+<div style="page-break-after: always;"></div>
 
 ### 4. Managing persons
 
@@ -143,6 +146,7 @@ Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [ts/TIMESLOT] [t/TR
 Examples:
 *  `edit 1 p/91234567 e/johndoe@example.com` Edits the phone number and email address of the 1st person to be `91234567` and `johndoe@example.com` respectively.
 *  `edit 2 n/Betsy Crower` Edits the name of the 2nd person to be `Betsy Crower`.
+<div style="page-break-after: always;"></div>
 
 #### 4.3 Deleting a person : `delete`
 
@@ -183,6 +187,7 @@ Format: `exit`
 PTcoach automatically saves data after commands that modify it, so manual saving is not needed. Read-only commands such as `list`, `find`, and `help` do not trigger a save.
 
 The live data resides in `[JAR file location]/data/addressbook.json`.
+<div style="page-break-after: always;"></div>
 
 #### 5.3 Editing the data file
 
@@ -215,6 +220,8 @@ PTcoach supports command history navigation similar to Unix command-line systems
 
 --------------------------------------------------------------------------------------------------------------------
 
+<div style="page-break-after: always;"></div>
+
 ## Flag Constraints
 
 **Name (`n/`):**
@@ -245,6 +252,7 @@ PTcoach supports command history navigation similar to Unix command-line systems
 * Must not contain substrings that resemble flag-like prefixes (e.g. `x/`, `xx/`)
 * Cannot be blank
 * This field is mandatory
+  &nbsp;
 
 **Timeslot (`ts/`):**
 * Represents the weekly training schedule of the client (e.g. `mon:1,3,5;tue:7`)
@@ -252,15 +260,23 @@ PTcoach supports command history navigation similar to Unix command-line systems
   * Multiple slots for the same day are separated by commas
   * Multiple days are separated by semicolons (without space in between)
 * Days must be 3-letter abbreviations (`mon`, `tue`, `wed`, `thu`, `fri`, `sat`, `sun`)
+* No duplicate days allowed in the same command
+  * e.g. `mon:1;mon:2` should be `mon:1,2` instead
+
+<div style="page-break-after: always;"></div>
+
+&nbsp;
 * Slots can be entered in two ways:
-  * Integers from **1 to 12**, each representing a fixed 1-hour time period.
+&nbsp;
+    * Integers from **1 to 12**, each representing a fixed 1-hour time period.
       * e.g. Slot 1 -> `0800-0900` and Slot 12 -> `1900-2000`
   * 24-hour format `HHMM-HHMM`, where times must start and end exactly on the hour (i.e. the minutes (MM) field must be `00`)
-      * e.g. `0800-0900` or `1900-2000`
+&nbsp;
+        * e.g. `0800-0900` or `1900-2000`
       * only valid 1-hour ranges are allowed
+        &nbsp;
+
 * No duplicate slots allowed for the same day
-* No duplicate days allowed in the same command
-    * e.g. `mon:1;mon:2` should be `mon:1,2` instead
 * Cannot be blank
 * This field is mandatory
 
@@ -296,6 +312,7 @@ PTcoach supports command history navigation similar to Unix command-line systems
 * This field is optional. Will be set to "Beginner" if not provided
 
 --------------------------------------------------------------------------------------------------------------------
+<div style="page-break-after: always;"></div>
 
 ## FAQ
 
@@ -318,6 +335,7 @@ PTcoach supports command history navigation similar to Unix command-line systems
 **A**: This is a known limitation. As a workaround, add a space before the `/` — e.g. `Unit B /12` — and the address will be saved correctly.
 
 --------------------------------------------------------------------------------------------------------------------
+<div style="page-break-after: always;"></div>
 
 ## Command summary
 

@@ -53,6 +53,7 @@
         "implementation": "Implementation",
         "command-history-navigation": "Command History Navigation",
         "filter-by-skill-feature": "Filter by Skill Feature",
+        "handling-invalid-data-during-startup": "Handling Invalid Data During Startup",
         "documentation-logging-testing-configuration-dev-ops": "Documentation, logging, testing, configuration, dev-ops",
         "appendix-requirements": "Appendix: Requirements",
         "product-scope": "Product scope",
@@ -69,7 +70,8 @@
         "clearing-all-persons": "Clearing all persons",
         "help-command": "Help command",
         "command-history-navigation-2": "Command history navigation",
-        "saving-data": "Saving data"
+        "saving-data": "Saving data",
+        "appendix-planned-enhancements": "Appendix: Planned Enhancements"
       },
       "headingKeywords": {}
     },

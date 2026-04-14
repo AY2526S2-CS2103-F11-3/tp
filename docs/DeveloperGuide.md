@@ -86,7 +86,7 @@ The UI consists of a `MainWindow` that is made up of parts e.g.`CommandBox`, `Re
 The `UI` component uses the JavaFx UI framework. The layout of these UI parts are defined in matching `.fxml` files that are in the `src/main/resources/view` folder. For example, the layout of the [`MainWindow`](https://github.com/AY2526S2-CS2103-F11-3/tp/blob/master/src/main/java/seedu/address/ui/MainWindow.java) is specified in [`MainWindow.fxml`](https://github.com/AY2526S2-CS2103-F11-3/tp/blob/master/src/main/resources/view/MainWindow.fxml)
 
 The `UI` component,
-                                                            
+
 * executes user commands using the `Logic` component.
 * holds a list of past commands executed using the `CommandHistory` component within CommandBox. (e.g 1:`add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01 t/Run 50km ts/mon:1,2 i/Shoulder dislocation`, 2:`list`.
 * listens for changes to `Model` data so that the UI can be updated with the modified data.
@@ -440,7 +440,6 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | `* * *` | trainer    | set an initial training level (e.g., Beginner) | know where to start a new client's training workout      |
 | `* * *` | trainer    | filter the list by training level              | plan group sessions for similar abilities                     |
 | `*`  | impatient user | get search results in under 200ms              | not feel held up while on the gym floor                       |
-| `* * *` | trainer    | undo the last command executed                 | quickly fix accidental deletions or edits                     |
 | `*`  | trainer    | list all clients who have no recorded injuries | identify clients who can handle high-intensity workouts  |
 | `*`  | expert user | use short aliases (e.g., `a` for add)          | enter data faster during back-to-back sessions                |
 | `*`  | trainer    | edit an existing progress note                 | correct typos or add more detail later                        |
@@ -489,17 +488,17 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 **Extensions**
 
 * 1a. Trainer searches for an invalid name.
-  * 1a1. PTcoach shows an error message.
-    
+  * 1a1. PTcoach shows no match.
+
     Use case ends.
 
 * 1b. The given command has an incorrect format.
   * 1b1. PTcoach shows an error message.
-  
+
     Use case ends.
-        
+     
 * 2a. The list is empty.
-  
+
   Use case ends.
 
 **Use case: UC3 - Edit a client**
@@ -515,12 +514,12 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 * 1a. Invalid index
   * 1a1. PTcoach shows an error message.
-  
+
     Use case ends.
   
 * 1b. Has missing parameters
   * 1b1. PTcoach shows an error message.
-        
+
     Use case ends.
 
 * 1c. No changes found
@@ -652,10 +651,10 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
   * 1b1. PTcoach shows an error message.
 
     Use case ends
-  
+
 * 1c. Trainer enters incorrect command format.
   * 1c1. PTcoach shows an error message.
-     
+
     Use case ends.
 
 **Use case: UC9 - Navigate command history**
@@ -671,17 +670,17 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 * 1a. There are no previously entered commands.  
   * 1a1. PTcoach does not display any command.
-  
+
   Use case ends.  
 
 * 1b. Trainer presses Up when already at the oldest command.
   * 1b1. PTcoach keeps displaying the oldest command. 
   
-  Use case ends. 
+  Use case ends.
 
 * 1c. Trainer presses Down when already at the most recent command.
   * 1c1. PTcoach displays an empty input field.
-  
+
   Use case ends.
 
 ### Non-Functional Requirements
@@ -699,14 +698,14 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 ### Glossary
 
 * **Personal Particulars**: The set of information stored for each client, including:
-  - Name  
-  - Contact Number  
-  - Address   
+  - Name
+  - Contact Number
+  - Address
   - Timeslots
   - Training Goals  
-  - Skill Level*  
+  - Skill Level*
   - Progress Record*  
-  - Injury Status*  
+  - Injury Status*
 
   \* Optional particulars
 
@@ -799,7 +798,7 @@ testers are expected to do more *exploratory* testing.
 
    2. Test case: `add n/John Doe p/98765432 e/invalidEmail a/John street t/Run 50km ts/mon:1,2`<br>
       Expected: No person is added. An error message is shown because the email is invalid
-   
+
    3. Test case: `add n/John Doe p/98765432 e/johnd@example.com a/John street t/Run 50km ts/mon:13`<br>
       Expected: No person is added. An error message is shown because the timeslot is invalid
 

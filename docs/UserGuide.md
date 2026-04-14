@@ -66,6 +66,8 @@ This page is the shared reference for how PTcoach commands are written and inter
 
 * If you are using a PDF version of this document, be careful when copying and pasting commands that span multiple lines as space characters surrounding line-breaks may be omitted when copied over to the application.
 
+**Note:** Flags have constraints. See [Flag Constraints](#flag-constraints) for details.
+
 ### 2. General notes
 
 * PTcoach does **not** allow duplicate persons.
@@ -185,7 +187,7 @@ Advanced users are welcome to update data directly by editing `[JAR file locatio
 <box type="warning">
 
 **Caution:** If the data file contains invalid entries, PTcoach will ignore those invalid entries during startup and continue loading the valid ones.
-- PTcoach will try to save the invalid entries to a separate file for reference. Hence, it is still recommended to make a backup of the data file before editing it manually.<br>
+- PTcoach will try to save the invalid entries to a separate file with the file name format: `"<original-file-name>-invalid-yyyyMMdd-HHmmss.txt"`. Hence, it is still recommended to make a backup of the data file before editing it in case file saving fails.<br>
 - Edits that do not follow the required format or valid value range may cause PTcoach to behave in unexpected ways. Edit the data file only if you are confident that you can update it correctly.<br>
 - If you edit the data file while PTcoach is **running**, your changes will not appear in the app immediately and may not be preserved, because the app can overwrite the file when it saves data. Always close PTcoach before editing the data file manually.
 
